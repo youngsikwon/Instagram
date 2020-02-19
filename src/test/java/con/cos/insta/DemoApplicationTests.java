@@ -1,4 +1,4 @@
-package con.cos.insta.demo;
+package con.cos.insta;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
