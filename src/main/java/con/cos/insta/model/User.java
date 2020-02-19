@@ -1,6 +1,9 @@
 package con.cos.insta.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -23,18 +26,19 @@ public class User {
     private String email; // 이메일
     private String phone;
     private String gender;
+    private String profileImage;
 
-    private String profileImage; // 프로필 이미지
 
 
     // (1) findById () 때만 동작
     // (2) findByUserInfo () 제외
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties({"user"})
     private List<Image> images = new ArrayList<>();
 
 
     @CreationTimestamp // 자동으로 현재 시간이 세팅
     private Timestamp createDate;
     @CreationTimestamp // 자동으로 현재 시간이 세팅
-    private TImestamp updateDate;
+    private Timestamp updateDate;
 }

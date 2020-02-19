@@ -20,10 +20,11 @@ public class Likes {
     @JoinColumn(name = "userId")
     @JsonIgnoreProperties({"password", "name", "website",
                         "bio", "email", "phone","gender","updateDate","createDate"})
-    private User user; // user_id
+    private User user; // user_id, username, profileImage
 
     @ManyToOne
     @JoinColumn(name = "imageId")
+    @JsonIgnoreProperties({"user", "likess"})
     private Image image; // 기본 : image_id
 
 
@@ -32,7 +33,7 @@ public class Likes {
     @CreationTimestamp // 자동으로 현재 시간이 세팅
     private Timestamp createDate;
     @CreationTimestamp // 자동으로 현재 시간이 세팅
-    private TImestamp updateDate;
+    private Timestamp updateDate;
 
 }
 
