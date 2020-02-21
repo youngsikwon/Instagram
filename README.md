@@ -10,5 +10,5 @@
 - Security base
 
 
-- Model Skill -> Image, Tag,  
+- Model  -> Image, Tag, User, Likes  
 
