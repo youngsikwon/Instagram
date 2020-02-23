@@ -10,5 +10,5 @@
 - Security base
 
 
-- Model  -> Image, Tag, User, Likes  
+- Model  -> Image, Tag, User, Likes. / Follow
 
