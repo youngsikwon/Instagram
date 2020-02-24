@@ -1,4 +1,4 @@
-package con.cos.insta.config;
+package com.cos.insta.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
