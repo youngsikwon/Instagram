@@ -4,6 +4,7 @@ package com.cos.insta.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cos.insta.model.Follow;
 import com.cos.insta.model.Image;
 import com.cos.insta.model.Likes;
 import com.cos.insta.model.User;
@@ -126,5 +127,13 @@ public class TestController {
         like.setImage(img1);
 
         return like;
-    }
+    }s
+
+    @GetMapping("/test/follow")
+    public @ResponseBody List<Follow> getFollows() {
+
+
+        User user1 = new User();
+
+        u
 }
