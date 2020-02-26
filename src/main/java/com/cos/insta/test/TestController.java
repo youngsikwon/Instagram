@@ -142,7 +142,7 @@ public class TestController {
 
         User user2 = new User();
         user2.setId(2);
-        user2.setUsername("youngsik");follow
+        user2.setUsername("youngsik");
         user2.setName("제이슨");
         user2.setEmail("jason@nate.com");
         user2.setProfileImage("jason.jpg");

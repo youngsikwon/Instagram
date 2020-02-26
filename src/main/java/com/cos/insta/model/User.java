@@ -17,14 +17,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; //시퀀스
-    private String username; // 사용자 아이디
-    private String name; // 암호된 패스워드
-    private String website; // 사용자 이름
-    private String bio; // 자기소개
-    private String email; // 이메일
+    private String password; // 암호화된 패스워드
+    private String name; // 사용자 이름
+    private String website; // 홈페이지 주소
+    private String bio; // 자기 소개
+    private String email;
     private String phone;
     private String gender;
-    private String profileImage;
+    private String profileImage; //프로파일 사진 경로+이름
+
+
 
 
 
