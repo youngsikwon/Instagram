@@ -24,3 +24,4 @@
   - 패스워드 : BCryptPasswordEncoder로 인코딩해서 다시 setPassword(인코딩패스워드);
   - save() 함수 호출
 
+> 3/2 css, js 추가   | auth -> join, login 추가
