@@ -1,6 +1,7 @@
 package com.cos.insta.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -13,15 +14,14 @@ public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; //시퀀스
+    private int id;
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "imageId")
+    @JoinColumn(name="imageId")
+    @JsonBackReference
     private Image image;
 
-
-
-    @CreationTimestamp // 자동으로 현재 시간이 세팅
+    @CreationTimestamp
     private Timestamp createDate;
 }

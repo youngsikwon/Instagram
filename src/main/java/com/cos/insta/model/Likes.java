@@ -14,26 +14,20 @@ public class Likes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; //시퀀스
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "userId")
-    @JsonIgnoreProperties({"password", "name", "website",
-                        "bio", "email", "phone","gender","updateDate","createDate"})
-    private User user; // user_id, username, profileImage
+    @JsonIgnoreProperties({"images", "password", "name", "website", "bio", "email", "phone", "gender", "createDate", "updateDate"})
+    private User user; // id, username, profileImage
 
     @ManyToOne
     @JoinColumn(name = "imageId")
-    @JsonIgnoreProperties({"user", "likess"})
-    private Image image; // 기본 : image_id
+    @JsonIgnoreProperties({"tags", "user", "likes"})
+    private Image image; // 기본 :  image_id
 
-
-
-
-    @CreationTimestamp // 자동으로 현재 시간이 세팅
+    @CreationTimestamp
     private Timestamp createDate;
-    @CreationTimestamp // 자동으로 현재 시간이 세팅
+    @CreationTimestamp
     private Timestamp updateDate;
-
 }
-

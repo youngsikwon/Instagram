@@ -18,6 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; //시퀀스
     private String password; // 암호화된 패스워드
+    private String username;//유저 이름
     private String name; // 사용자 이름
     private String website; // 홈페이지 주소
     private String bio; // 자기 소개
