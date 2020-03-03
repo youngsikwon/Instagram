@@ -42,9 +42,7 @@ public class UserController {
         user.setPassword(encPassword);
         log.info("rawPassword : " + rawPassword);
         log.info("encPassword : " + encPassword);
-
         mUserRepository.save(user);
-
         return "redirect:/auth/login";
     }
 }
