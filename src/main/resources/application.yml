@@ -18,7 +18,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
@@ -43,6 +43,8 @@ spring:
       name: test
       password: 1234
 
-
 file:
-  path: C:/src/instaclone/insta/src/main/resources/upload/
+  path: C:/src/instagram/src/main/resources/upload/
+
+  #file:
+  #  path: C:/src/springWork/insta/springboot-jpa-instagram/src/main/resources/upload/

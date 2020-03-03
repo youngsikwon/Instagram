@@ -10,9 +10,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           rel="stylesheet">
     <link rel="shortcut icon" href="/imag es/favicon.ico">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">ß
 </head>
+
 <body>
+
 <main id="login">
     <div class="login__column">
         <img src="/images/phoneImage.png" />
@@ -25,9 +27,9 @@
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="submit" value="Log in">
             </form>
-            <span class="login__divider">
-          or
-        </span>
+
+            <span class="login__divider">or</span>
+
             <a href="/auth/kakao/login" class="login__fb-link">
                 <img width="100%" src="/images/kakao_account_login_btn_medium_wide.png"/>
             </a>
