@@ -25,3 +25,4 @@
   - save() 함수 호출
 
 > 3/2 css, js 추가   | auth -> join, login 추가
+ - 3/4 -> Feed 
