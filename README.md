@@ -25,4 +25,5 @@
   - save() 함수 호출
 
 > 3/2 css, js 추가   | auth -> join, login 추가
- - 3/4 -> Feed 
+ - 3/4 -> Feed
+ # 변경 조정 중
