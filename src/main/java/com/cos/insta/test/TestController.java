@@ -183,4 +183,9 @@ public class TestController {
         return "/auth/join";
     }
 
+    @GetMapping("/test/profile")
+    public String testProfile(){
+        return"/user/profile";
+    }
+
 }

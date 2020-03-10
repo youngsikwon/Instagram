@@ -180,8 +180,8 @@
                     </div>
                 </a>
             </div>
-            <div class="profile__photo">
-                <a href="image-detail.html">
+            <div class="profile__photo">å
+                <a href="image-detail.html">å
                     <img src="/images/feedPhoto.jpg">
                     <div class="profile__photo-overlay">
               <span class="profile__photo-stat">
@@ -196,7 +196,7 @@
         </div>
     </div>
 </main>
-<%@ include file="../include/footer.jsp" %>
+
 <div class="profile__overlay">
     <i class="fa fa-times"></i>
     <div class="profile__overlay-container">
@@ -207,8 +207,9 @@
         <a href="#" class="profile__overlay-link" id="cancel">Cancel</a>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/js/app.js"></script>
+
+-- footer 인클라우드~
+<%@ include file="../include/footer.jsp" %>
 
 <script>
     $(function() {
