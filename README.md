@@ -26,4 +26,4 @@
 
 > 3/2 css, js 추가   | auth -> join, login 추가
  - 3/4 -> Feed
- # 변경 조정 중
+ - 3/10 Profile 추가 및 follow follower 추가 예정< 3/11>
