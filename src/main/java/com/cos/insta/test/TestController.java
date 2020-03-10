@@ -172,4 +172,15 @@ public class TestController {
 
         return follows;
     }
+
+    @GetMapping("/test/login")
+    public String testLogin(){
+        return "/auth/login";
+    }
+
+    @GetMapping("/test/join")
+    public String testJoin(){
+        return "/auth/join";
+    }
+
 }

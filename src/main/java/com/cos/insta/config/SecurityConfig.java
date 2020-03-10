@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.cors().disable();
         http.authorizeRequests()
-                .antMatchers("/user/**", "/follow/**", "/images/**")
+                .antMatchers("/user/**", "/follow/**", "/image/**")// images -> Image로 변경 후 웹 이미지 정상출력.
                 .authenticated()
                 .anyRequest()
                 .permitAll()
@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/auth/login")
                 .loginProcessingUrl("/auth/loginProc")
-                .defaultSuccessUrl("/image/feed");
+                .defaultSuccessUrl("/");
     }
 
     @Autowired
