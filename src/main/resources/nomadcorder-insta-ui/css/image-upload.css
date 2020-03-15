@@ -67,7 +67,9 @@ input[type=button], input[type=submit] {
 	border: 0px;
 	color: white;
 }
-
+p{
+	width: 400px;
+}
 .under li {
 	display: inline-block;
 	padding: 5px;

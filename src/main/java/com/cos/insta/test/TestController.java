@@ -175,27 +175,31 @@ public class TestController {
 
     @GetMapping("/test/login")
     public String testLogin(){
-        return "/auth/login";
+        return "auth/login";
     }
 
     @GetMapping("/test/join")
     public String testJoin(){
-        return "/auth/join";
+        return "auth/join";
     }
 
     @GetMapping("/test/profile")
     public String testProfile(){
-        return"/user/profile";
+        return"user/profile";
     }
 
     @GetMapping("/test/profile_Edit")
     public String testProfileEdit(){
-        return"/user/profile_edit";
+        return"user/profile_edit";
     }
 
-    @GetMapping("/test/Feed")
+    @GetMapping("/test/feed")
     public String testFeed(){
-        return"/image/feed";
+        return "image/feed";
+    }
+    @GetMapping("/test/image_upload")
+    public String testImage_upload(){
+        return "image/image_upload";
     }
 
 }
