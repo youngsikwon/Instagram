@@ -10,10 +10,12 @@
     <title>Edit Profile | Jejugram</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           rel="stylesheet">
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/modal.css">
 </head>
 <body>
+
 <%@ include file="../include/nav.jsp" %>
 
 
@@ -22,7 +24,7 @@
 
         <header class="edit-profile__header">
             <div class="fucker-container">
-                <img src="images/avatar.jpg" />
+                <img src="/images/avatar.jpg" />
             </div>
             <!-- master comments -->
             <h1 class="edit-profile__username">serranoarevalo</h1>

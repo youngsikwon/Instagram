@@ -67,6 +67,11 @@ input[type=button], input[type=submit] {
 	border: 0px;
 	color: white;
 }
+footer{
+	display: black;
+	position: relative;
+}
+
 p{
 	width: 400px;
 }
