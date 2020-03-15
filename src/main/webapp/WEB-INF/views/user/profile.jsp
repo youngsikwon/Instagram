@@ -16,9 +16,7 @@
 </head>
 
 <body>
--- nav 인클라우드~
 <%@ include file="../include/nav.jsp" %>
--- nav 인클라우드~
 <main id="profile">
     <header class="profile__header">
         <div class="avatar__container">

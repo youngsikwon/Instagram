@@ -14,10 +14,8 @@
 </head>
 <body>
 
-
--- nav 인클라우드~
 <%@ include file="../include/nav.jsp" %>
--- nav 인클라우드~
+
 <main id="feed">
     <div class="photo u-default-box">
         <header class="photo__header">
@@ -82,10 +80,6 @@
         </div>
     </div>
 </main>
-
-
-
-
 
 <%@ include file="../include/footer.jsp" %>
 

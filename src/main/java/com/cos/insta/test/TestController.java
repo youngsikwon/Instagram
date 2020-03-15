@@ -188,4 +188,14 @@ public class TestController {
         return"/user/profile";
     }
 
+    @GetMapping("/test/profile_Edit")
+    public String testProfileEdit(){
+        return"/user/profile_edit";
+    }
+
+    @GetMapping("/test/Feed")
+    public String testFeed(){
+        return"/image/feed";
+    }
+
 }

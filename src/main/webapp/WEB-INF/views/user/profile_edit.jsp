@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
--- nav 인클라우드~
 <%@ include file="../include/nav.jsp" %>
--- nav 인클라우드~
 
 
 <main id="edit-profile">
