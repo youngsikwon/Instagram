@@ -65,7 +65,7 @@
             </div>
             <div class="edit-profile__row">
                 <span></span>
-                <input type="submit">
+                <input style="background-color:#3897F0;" type="submit">
             </div>
         </form>
 
