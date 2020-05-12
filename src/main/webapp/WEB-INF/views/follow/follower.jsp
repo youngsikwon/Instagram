@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>HOME</title>
+    <title>WonStagram</title>
 </head>
 <body>
 <h1>TEST HOME PAGE</h1>

@@ -202,4 +202,8 @@ public class TestController {
         return "image/image_upload";
     }
 
+    @GetMapping("/test/explore")
+    public String testExplore() {
+        return "image/explore";
+    }
 }

@@ -28,7 +28,6 @@ public class UserController {
         return "auth/login";
     }
 
-
     @GetMapping("/auth/join")
     public String authJoin() {
         return "auth/join";
