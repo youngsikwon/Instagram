@@ -30,4 +30,12 @@
  
  
  3/15 
-  -> Profile_Edit[Update]  수정 
+  -> Profile_Edit[Update]  수정
+  
+ # 5/14------- 
+ 
+ - fetch API를 사용하여 팔로우 구현
+  
+  
+  
+  
