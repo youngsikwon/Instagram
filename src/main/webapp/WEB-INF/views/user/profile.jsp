@@ -29,8 +29,11 @@
         <div class="profile__info">
             <div class="profile__title">
                 <h1>serranoarevalo</h1>
+                <a class="follow_btn" href="edit-profile.html">
+                  <button class="profile_follow_btn"> 팔로우</button>
+                </a>
                 <a href="edit-profile.html">
-                    <button>팔로잉</button>
+                    <button class="propfile_edit_btn">Edit Profile</button>
                 </a>
                 <i class="fa fa-cog fa-lg"></i>
             </div>

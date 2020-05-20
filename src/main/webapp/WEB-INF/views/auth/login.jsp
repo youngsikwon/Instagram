@@ -23,7 +23,7 @@
             <form action="/auth/loginProc" method="post" class="login__form">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <input type="submit" value="Log in">
+                <input type="submit" value="Login">
             </form>
             <span class="login__divider">
           or

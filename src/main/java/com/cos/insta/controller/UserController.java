@@ -2,8 +2,6 @@ package com.cos.insta.controller;
 
 import com.cos.insta.model.Image;
 import com.cos.insta.model.User;
-import com.cos.insta.repository.FollowRepository;
-import com.cos.insta.repository.LikesRepository;
 import com.cos.insta.repository.UserRepository;
 import com.cos.insta.service.MyUserDetail;
 
@@ -31,8 +29,6 @@ public class UserController {
     @Autowired
     private UserRepository mUserRepository;
 
-    @Autowired
-    private FollowRepository mFollowRespository;
 
     @GetMapping("/auth/login")
     public String authLogin() {
@@ -56,21 +52,11 @@ public class UserController {
         return "redirect:/auth/login";
     }
 
-
-    @GetMapping("user/{id}")
-    public String profile(
-            @PathVariable int id,
-    @AuthenticationPrincipal MyUserDetail userDetail,
-            Model model){
-//        1. imageCount
-//        2. followerCount
-//        3. followingCOunt
-//        4. User 오브젝트 (Image (likeCount) 컬렉션)
-//        5. followCheck 유무
-
-//        5번
-        User user = userDetail.getUser();
-        mFollowRespository.countByFromUserIdAndToUserId(user.getId(), id);
+    @GetMapping("/user/{id}")
+    public String profile(@PathVariable int id){ // 파라메타 타입으로 접속을 한다.
+        // id를 통해서 해당 유저를 검색(이미지 + 유저정보)
         return "user/profile";
     }
+
+
 }
