@@ -68,14 +68,14 @@ public class FollowController {
 
 
         //팔로우 리스트  (ssar : 3) 1, 2, 4
-        List<Follow> follows = mFollowRepository.findByToUserId(id);
+        List<Follow> follows = mFollowRepository.findByFromUserId(id);
 
         //팔로우 리스트 (cos : 1) 2, 3
-        List<Follow> principalFollows = mFollowRepository.findByToUserId(id);
+        List<Follow> principalFollows = mFollowRepository.findByFromUserId(id);
 
        for(Follow f1 : follows){ // 3번 돈다.
            for(Follow f2 : principalFollows){
-               if(f1.getToUser().equals(f2.getToUser())){
+               if(f1.getToUser().getId() == f2.getToUser().getId()){
                    f1.setFollowState(true);
                }
            }
