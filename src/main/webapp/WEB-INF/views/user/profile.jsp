@@ -29,9 +29,47 @@
         <div class="profile__info">
             <div class="profile__title">
                 <h1>serranoarevalo</h1>
-                <a class="follow_btn" href="edit-profile.html">
-                  <button class="profile_follow_btn"> 팔로우</button>
-                </a>
+                <div id="follow_check">
+                <c:choose>
+                    <c:when test ="${followCheck eq 1}">
+                            <button onclick="follow(false)" class="profile_edit_btn"> 팔로잉</button>
+                    </c:when>
+                    <c:otherwise>
+                            <button onclick="follow(true)" class="profile_follow_btn"> 팔로우</button>
+                    </c:otherwise>
+                </c:choose>
+                </div>
+                <script>
+                    function follow(check){
+                        // true -> follow 하기
+                        // false -> unFollow 하기
+                        let url = "/follow/${toUser.id}"
+                        if(check){
+                            fetch(url,{
+                                method: "POST"
+                            }).then(function(res){
+                                return res.text();
+                            }).then(function(res){
+                                if(result === "ok"){
+                                     let follow_check_el = document.querySelector("#follow_check");
+                                    follow_check_el.innerHTML="<button onclick='follow(false)' class='profile_edit_btn'> 팔로잉</button>";
+                                }
+                            });
+                        }else{
+                            fetch(url,{
+                                method: "POST"
+                            }).then(function(res){
+                                return res.text();
+                            }).then(function(res){
+                                if(result === "ok"){
+                                    let follow_check_el = document.querySelector("#follow_check");
+                                    follow_check_el.innerHTML="<button onclick='follow(true)' class='profile_follow_btn'> 팔로</button>";
+                                }
+                            });
+                        }
+                    }
+
+                </script>
                 <a href="edit-profile.html">
                     <button class="propfile_edit_btn">Edit Profile</button>
                 </a>
@@ -196,8 +234,9 @@
     </div>
 </div>
 
-<%@ include file="../include/footer.jsp" %>
 
+<%@ include file="../include/footer.jsp" %>
+<script src="/js/follow.js"></script>
 <script>
     $(function() {
         //이미지 클릭시 업로드창 실행

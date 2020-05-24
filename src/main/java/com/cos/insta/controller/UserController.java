@@ -2,6 +2,7 @@ package com.cos.insta.controller;
 
 import com.cos.insta.model.Image;
 import com.cos.insta.model.User;
+import com.cos.insta.repository.FollowRepository;
 import com.cos.insta.repository.UserRepository;
 import com.cos.insta.service.MyUserDetail;
 
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Controller
 public class UserController {
 
@@ -28,6 +31,10 @@ public class UserController {
 
     @Autowired
     private UserRepository mUserRepository;
+
+
+    @Autowired
+    private FollowRepository mFollowReponRepository;
 
 
     @GetMapping("/auth/login")
@@ -53,8 +60,34 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public String profile(@PathVariable int id){ // 파라메타 타입으로 접속을 한다.
+    public String profile(
+            @AuthenticationPrincipal MyUserDetail userDetail,
+            Model model,
+            @PathVariable int id){ // 파라메타 타입으로 접속을 한다.
         // id를 통해서 해당 유저를 검색(이미지 + 유저정보)
+
+        // 1. imageCount
+        // 2. followerCount
+        // 3. followingCount
+        // 4. User 오브젝트 (Image (likeCount) 컬렉션)
+        // 5. followCheck 팔로우 유무 (1 팔로우중 1이 아니면 언팔로우)
+
+        // 4. 임시 (수장해야함)
+        Optional<User> oToUser = mUserRepository.findById(id);
+
+        User toUser = oToUser.get();
+        model.addAttribute("toUser", toUser);
+
+        User user = userDetail.getUser();
+
+
+
+        //5번
+        int followCheck = mFollowReponRepository.countByFromUserIdAndToUserId(user.getId(), id);
+        log.info("followCheck" + followCheck);
+        model.addAttribute("followCheck", followCheck);
+
+
         return "user/profile";
     }
 

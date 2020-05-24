@@ -11,5 +11,11 @@ public interface FollowRepository extends JpaRepository<Follow, Integer> {
 
     //un FOllow
     @Transactional
-    void deleteByFromUserIdAndToUserId(int fromUserId, int toUserId);
+    int deleteByFromUserIdAndToUserId(int fromUserId, int toUserId);
+
+
+    // 팔로우 유무
+    int countByFromUserIdAndToUserId(int fromUserId, int toUserId);
+
+
 }
