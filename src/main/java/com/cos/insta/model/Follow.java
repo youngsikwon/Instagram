@@ -12,6 +12,8 @@ import java.sql.Timestamp;
 @Entity
 public class Follow {
 
+        // 어노테이션 학습
+    // @Transien :  데이터베이스에 저장하지 않고 조회하지도 않습니다.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -33,6 +35,13 @@ public class Follow {
 
     @Transient
     private boolean matpla;
+
+    @Transient
+    private boolean followState;
+
+
+    @Transient
+    private boolean principalMatpal;
 
     @CreationTimestamp
     private Timestamp createDate;
