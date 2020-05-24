@@ -17,7 +17,6 @@ public class ImageControoler {
     public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail ){
 
         log.info("Username : "+userDetail.getUsername());
-
         return "image/feed";
     }
 }
