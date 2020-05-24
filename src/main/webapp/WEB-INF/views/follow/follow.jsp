@@ -28,7 +28,7 @@
                     <span class="explore__username">${follow.toUser.username}</span>
                 </div>
             </div>
-            <button>팔로잉</button>
+            <button onclick="follow(false, ${user.id})" class="following_btn">팔로잉</button>
         </li>
         </c:forEach>
         </li>
