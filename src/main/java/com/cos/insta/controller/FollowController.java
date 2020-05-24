@@ -9,8 +9,10 @@ import com.cos.insta.service.MyUserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,9 +62,10 @@ public class FollowController {
     }
 
     @GetMapping("/follow/follow/{id}")
-    public String followFollow (@PathVariable int id){
-
+    public String followFollow (@PathVariable int id, Model model){
         //팔로우 리스트
+        List<Follow> follows = mFollowRepository.findByToUserId(id);
+        model.addAttribute("follows", follows);
 
         return "follow/follow";
     }

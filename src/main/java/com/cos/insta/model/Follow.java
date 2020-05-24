@@ -14,7 +14,6 @@ public class Follow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int id;
 
     // 중간 테이블 생성됨.

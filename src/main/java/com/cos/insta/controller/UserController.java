@@ -76,6 +76,7 @@ public class UserController {
         Optional<User> oToUser = mUserRepository.findById(id);
         User user = oToUser.get();
         model.addAttribute("user", user);
+
         // 5번
         User principal = userDetail.getUser();
 
@@ -84,6 +85,17 @@ public class UserController {
         model.addAttribute("followCheck", followCheck);
 
         return "user/profile";
+    }
+
+
+    @GetMapping("/user/edit/{id}")
+    public String userEdit(@PathVariable int id){
+
+
+        // 해당 id로 Select 하기
+        // finByUserInfo() 사용(만들어야함)
+
+        return "user/profile_edit";
     }
 
 
