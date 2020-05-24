@@ -28,13 +28,13 @@
                     <span class="explore__username">${follower.fromUser.username}</span>
                 </div>
             </div>
-            <c:if test="${principal.user_id ne follow.toUser.id}">
+            <c:if test="${principal.user_id ne follower.fromUser.id}">
                 <c:choose>
-                    <c:when test="${follow.followState eq true}">
-                        <button onclick="follow(false, ${follow.toUser.id})" class="following_btn">팔로잉</button>
+                    <c:when test="${follower.followState eq true}">
+                        <button onclick="follow(false, ${follower.fromUser.id})" class="following_btn">팔로잉</button>
                     </c:when>
                     <c:otherwise>
-                        <button onclick="follow(false, ${follow.toUser.id})" class="follow_btn">팔로우</button>
+                        <button onclick="follow(false, ${follower.fromUser.id})" class="follow_btn">팔로우</button>
                     </c:otherwise>
                 </c:choose>
             </c:if>
