@@ -74,19 +74,14 @@ public class UserController {
 
         // 4. 임시 (수장해야함)
         Optional<User> oToUser = mUserRepository.findById(id);
+        User user = oToUser.get();
+        model.addAttribute("user", user);
+        // 5번
+        User principal = userDetail.getUser();
 
-        User toUser = oToUser.get();
-        model.addAttribute("toUser", toUser);
-
-        User user = userDetail.getUser();
-
-
-
-        //5번
-        int followCheck = mFollowReponRepository.countByFromUserIdAndToUserId(user.getId(), id);
+        int followCheck = mFollowReponRepository.countByFromUserIdAndToUserId(principal.getId(), id);
         log.info("followCheck" + followCheck);
         model.addAttribute("followCheck", followCheck);
-
 
         return "user/profile";
     }

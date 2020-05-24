@@ -28,48 +28,19 @@
         </div>
         <div class="profile__info">
             <div class="profile__title">
-                <h1>serranoarevalo</h1>
+                <h1>${user.username}</h1>
                 <div id="follow_check">
                 <c:choose>
                     <c:when test ="${followCheck eq 1}">
-                            <button onclick="follow(false)" class="profile_edit_btn"> 팔로잉</button>
+                            <button onclick="follow(false, ${user.id})" class="profile_edit_btn"> 팔로잉</button>
                     </c:when>
                     <c:otherwise>
-                            <button onclick="follow(true)" class="profile_follow_btn"> 팔로우</button>
+                            <button onclick="follow(true, ${user.id})" class="profile_follow_btn"> 팔로우</button>
                     </c:otherwise>
                 </c:choose>
                 </div>
-                <script>
-                    function follow(check){
-                        // true -> follow 하기
-                        // false -> unFollow 하기
-                        let url = "/follow/${toUser.id}"
-                        if(check){
-                            fetch(url,{
-                                method: "POST"
-                            }).then(function(res){
-                                return res.text();
-                            }).then(function(res){
-                                if(result === "ok"){
-                                     let follow_check_el = document.querySelector("#follow_check");
-                                    follow_check_el.innerHTML="<button onclick='follow(false)' class='profile_edit_btn'> 팔로잉</button>";
-                                }
-                            });
-                        }else{
-                            fetch(url,{
-                                method: "POST"
-                            }).then(function(res){
-                                return res.text();
-                            }).then(function(res){
-                                if(result === "ok"){
-                                    let follow_check_el = document.querySelector("#follow_check");
-                                    follow_check_el.innerHTML="<button onclick='follow(true)' class='profile_follow_btn'> 팔로</button>";
-                                }
-                            });
-                        }
-                    }
 
-                </script>
+
                 <a href="edit-profile.html">
                     <button class="propfile_edit_btn">Edit Profile</button>
                 </a>
@@ -77,22 +48,18 @@
             </div>
             <ul class="profile__stats">
                 <li class="profile__stat">
-                    <span class="profile__stat-number">313</span> posts
+                    <span class="profile__stat-number">313</span>
                 </li>
                 <li class="profile__stat">
-                    <span class="profile__stat-number">4,444</span> followers
+                    <span class="profile__stat-number">4,444</span><a href="/follow/follower/${user.id}">팔로워</a>
                 </li>
                 <li class="profile__stat">
-                    <span class="profile__stat-number">44</span> following
+                    <span class="profile__stat-number">44</span><a href="follow/follow/${user.id}">팔로워</a>
                 </li>
             </ul>
             <p class="profile__bio">
-                <span class="profile__fullname">Nicolás Serrano Arévalo</span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptas repellendus cumque quo voluptatum voluptatem,
-                maxime nobis. Quae incidunt cum expedita facilis libero officiis,
-                delectus inventore tempore, ex nulla dolore cumque.
-                <a href="http://serranoarevalo.com" class="profile__link">serranoarevalo.com</a>
+                <span class="profile__fullname">${user.name}</span>
+                <a href="${user.website}" class="profile__link">${user.website}</a>
             </p>
         </div>
     </header>
@@ -235,8 +202,8 @@
 </div>
 
 
-<%@ include file="../include/footer.jsp" %>
-<script src="/js/follow.js"></script>
+<%@ include file="../include/footer.jsp"%>
+<script src="/js/profile.js"></script>
 <script>
     $(function() {
         //이미지 클릭시 업로드창 실행
