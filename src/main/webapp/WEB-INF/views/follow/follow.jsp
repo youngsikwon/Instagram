@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,31 +19,39 @@
 
 <main id="explore">
 
-    <c:forEach var="follow" items="${follows}">
+    <c:forEach var="follow" items="${follows}" varStatus="status">
     <ul class="explore__users u-default-box">
         <li class="explore__user">
             <div class="explore__content">
-                <img src="/images/avatar.jpg" />
+                <img src="/images/avatar.jpg"/>
                 <div class="explore__info">
                     <span class="explore__username">${follow.toUser.username}</span>
                 </div>
             </div>
-            <c:if test="${principal.user_id ne follow.toUser.id}">
-            <c:choose>
+
+            <div id="follow_item_${status.count}">
+                <c:if test="${principal.user_id ne follow.toUser.id}">
+                <c:choose>
                 <c:when test="${follow.followState eq true}">
-                    <button onclick="follow(false, ${follow.toUser.id})" class="following_btn">팔로잉</button>
+                <button  onclick="follow(false, ${follow.toUser.id}, ${status.count})"
+                        class="following_btn">팔로잉
+                </button>
                 </c:when>
                 <c:otherwise>
-                    <button onclick="follow(false, ${follow.toUser.id})" class="follow_btn">팔로우</button>
+                <button  onclick="follow(false, ${follow.toUser.id}, ${status.count})"
+                        class="follow_btn">팔로우
+                </button>
                 </c:otherwise>
-            </c:choose>
-            </c:if>
+                </c:choose>
+                </c:if>
         </li>
         </c:forEach>
+        </div>
+
         </li>
     </ul>
 </main>
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
