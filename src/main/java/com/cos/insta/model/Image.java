@@ -16,7 +16,6 @@ import java.util.List;
 public class Image {
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,7 +24,7 @@ public class Image {
     private String postImage; //포스팅 사진 경로+이름
 
     @ManyToOne
-    @JoinColumn(name="userId")
+    @JoinColumn(name = "userId")
     @JsonIgnoreProperties({"password", "images"})
     private User user;
 

@@ -10,7 +10,7 @@ import com.cos.insta.model.User;
 import com.cos.insta.repository.UserRepository;
 
 @Service
-public class MyUserDetailService implements UserDetailsService{
+public class MyUserDetailService implements UserDetailsService {
 
     @Autowired
     private UserRepository mUserRepository;
@@ -18,16 +18,16 @@ public class MyUserDetailService implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        System.out.println("loadUserByUsername : "+username);
+        System.out.println("loadUserByUsername : " + username);
         User user = mUserRepository.findByUsername(username);
 
         MyUserDetail userDetails = null;
-        if(user != null) {
+        if (user != null) {
             userDetails = new MyUserDetail();
             userDetails.setUser(user);
 
 
-        }else {
+        } else {
             throw new UsernameNotFoundException("Not Found 'username'");
         }
         return userDetails;

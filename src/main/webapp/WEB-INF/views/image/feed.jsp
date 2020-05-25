@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +13,14 @@
 </head>
 <body>
 
-<%@ include file="../include/nav.jsp"%>
+<%@ include file="../include/nav.jsp" %>
 
 <main id="feed">
     <div class="photo u-default-box">
         <header class="photo__header">
-            <img src="/images/avatar.jpg" /> <span class="photo__username">serranoarevalo</span>
+            <img src="/images/avatar.jpg"/> <span class="photo__username">serranoarevalo</span>
         </header>
-        <img src="/images/feedPhoto.jpg" />
+        <img src="/images/feedPhoto.jpg"/>
         <div class="photo__info">
             <div class="photo__actions">
 					<span class="photo__action"> <i class="fa fa-heart-o heart"></i>
@@ -30,9 +30,11 @@
             <span class="photo__likes">5,103 likes</span>
             <ul class="photo__comments">
                 <li class="photo__comment"><span class="photo__comment-author">serranoarevalo</span> i
-                    love this!</li>
+                    love this!
+                </li>
                 <li class="photo__comment"><span class="photo__comment-author">serranoarevalo</span> i
-                    don't love this!</li>
+                    don't love this!
+                </li>
             </ul>
             <span class="photo__date">1 hour ago</span>
             <div class="photo__add-comment-container">
@@ -43,9 +45,9 @@
     </div>
     <div class="photo u-default-box">
         <header class="photo__header">
-            <img src="/images/avatar.jpg" /> <span class="photo__username">serranoarevalo</span>
+            <img src="/images/avatar.jpg"/> <span class="photo__username">serranoarevalo</span>
         </header>
-        <img src="/images/feedPhoto.jpg" />
+        <img src="/images/feedPhoto.jpg"/>
         <div class="photo__info">
             <div class="photo__actions">
 					<span class="photo__action"> <i class="fa fa-heart-o heart"></i>
@@ -55,9 +57,11 @@
             <span class="photo__likes">5,103 likes</span>
             <ul class="photo__comments">
                 <li class="photo__comment"><span class="photo__comment-author">serranoarevalo</span> i
-                    love this!</li>
+                    love this!
+                </li>
                 <li class="photo__comment"><span class="photo__comment-author">serranoarevalo</span> i
-                    don't love this!</li>
+                    don't love this!
+                </li>
             </ul>
             <span class="photo__date">1 hour ago</span>
             <div class="photo__add-comment-container">
@@ -68,7 +72,7 @@
     </div>
 </main>
 
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../include/footer.jsp" %>
 
 </body>
 </html>

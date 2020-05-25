@@ -63,7 +63,7 @@ public class UserController {
     public String profile(
             @AuthenticationPrincipal MyUserDetail userDetail,
             Model model,
-            @PathVariable int id){ // 파라메타 타입으로 접속을 한다.
+            @PathVariable int id) { // 파라메타 타입으로 접속을 한다.
         // id를 통해서 해당 유저를 검색(이미지 + 유저정보)
 
         // 1. imageCount
@@ -89,8 +89,7 @@ public class UserController {
 
 
     @GetMapping("/user/edit/{id}")
-    public String userEdit(@PathVariable int id){
-
+    public String userEdit(@PathVariable int id) {
 
         // 해당 id로 Select 하기
         // finByUserInfo() 사용(만들어야함)

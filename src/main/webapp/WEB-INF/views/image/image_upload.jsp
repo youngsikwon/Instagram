@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,12 +20,12 @@
             <div>
                 <img src="/images/loginLogo.png" alt="x" class="image">
             </div>
-            <br />
+            <br/>
 
             <div class="text">
-                <hr class="hr" />
+                <hr class="hr"/>
                 사진업로드
-                <hr class="hr" />
+                <hr class="hr"/>
             </div>
             <!-- 섬네일은 아래 주소 참고 -->
             <!-- https://medium.com/@asadise/create-thumbnail-for-an-image-in-spring-framework-49776c873ea1 -->
@@ -39,7 +39,7 @@
                     <tr>
                         <td>
                             <div class="img_wrap">
-                                <img id="img" />
+                                <img id="img"/>
                             </div>
                         </td>
                     </tr>
@@ -69,20 +69,21 @@
 
 <script>
     var sel_file;
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#input_img').on("change", handleImgFileSelect);
     });
+
     function handleImgFileSelect(e) {
         var files = e.target.files;
         var filesArr = Array.prototype.slice.call(files);
-        filesArr.forEach(function(f) {
+        filesArr.forEach(function (f) {
             if (!f.type.match("image.*")) {
                 alert("확장자는 이미지 확장자만 가능합니다.");
                 return;
             }
             sel_file = f;
             var reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 $('#img').attr('src', e.target.result);
             }
             reader.readAsDataURL(f);

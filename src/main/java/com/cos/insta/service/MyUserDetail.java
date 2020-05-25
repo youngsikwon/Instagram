@@ -10,7 +10,7 @@ import com.cos.insta.model.User;
 import lombok.Data;
 
 @Data
-public class MyUserDetail implements UserDetails{
+public class MyUserDetail implements UserDetails {
 
     private User user;
 

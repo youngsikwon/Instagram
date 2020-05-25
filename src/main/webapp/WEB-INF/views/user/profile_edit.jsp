@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +20,7 @@
 
         <header class="edit-profile__header">
             <div class="fucker-container">
-                <img src="/images/avatar.jpg" />
+                <img src="/images/avatar.jpg"/>
             </div>
             <!-- master comments -->
             <h1 class="edit-profile__username">serranoarevalo</h1>
@@ -53,7 +53,7 @@
             </div>
             <div class="edit-profile__row">
                 <label class="edit-profile__label" for="gender">Gender</label>
-                <select  id="gender">
+                <select id="gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="cant-remember" selected>Can't remember</option>

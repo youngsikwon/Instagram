@@ -18,7 +18,7 @@ public class Tag {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="imageId")
+    @JoinColumn(name = "imageId")
     @JsonBackReference
     private Image image;
 

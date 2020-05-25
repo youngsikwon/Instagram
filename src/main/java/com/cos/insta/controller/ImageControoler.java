@@ -13,10 +13,10 @@ public class ImageControoler {
 
     private static final Logger log = LoggerFactory.getLogger(ImageControoler.class);
 
-    @GetMapping({"/","image/feed"})
-    public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail ){
+    @GetMapping({"/", "image/feed"})
+    public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail) {
 
-        log.info("Username : "+userDetail.getUsername());
+        log.info("Username : " + userDetail.getUsername());
         return "image/feed";
     }
 }

@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Entity
 public class Follow {
 
-        // 어노테이션 학습
+    // 어노테이션 학습
     // @Transien :  데이터베이스에 저장하지 않고 조회하지도 않습니다.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

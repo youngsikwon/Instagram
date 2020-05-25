@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity //스프링 시큐리티 필터에 등록하는 어노테이션
-@EnableGlobalMethodSecurity(prePostEnabled=true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // 1. Bean 어노테이션은 메서드에 붙여서 객체 생성시 사용
@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.cors().disable();
         http.authorizeRequests()
-                .antMatchers("/","/user/**", "/follow/**", "/image/**")// images -> Image로 변경 후 웹 이미지 정상출력.
+                .antMatchers("/", "/user/**", "/follow/**", "/image/**")// images -> Image로 변경 후 웹 이미지 정상출력.
                 .authenticated()
                 .anyRequest()
                 .permitAll()

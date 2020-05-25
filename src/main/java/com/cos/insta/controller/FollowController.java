@@ -27,7 +27,8 @@ public class FollowController {
     private FollowRepository mFollowRepository;
 
     @PostMapping("/follow/{id}")
-    public @ResponseBody String follow(@AuthenticationPrincipal MyUserDetail userDetail, @PathVariable int id) {
+    public @ResponseBody
+    String follow(@AuthenticationPrincipal MyUserDetail userDetail, @PathVariable int id) {
         User fromUser = userDetail.getUser();
         Optional<User> oToUser = mUserRepository.findById(id);
         User toUser = oToUser.get();
@@ -37,12 +38,12 @@ public class FollowController {
         follow.setToUser(toUser);
 
         mFollowRepository.save(follow);
-
         return "ok";
     }
 
     @DeleteMapping("/follow/{id}")
-    public @ResponseBody String unFollow(@AuthenticationPrincipal MyUserDetail userDetail, @PathVariable int id) {
+    public @ResponseBody
+    String unFollow(@AuthenticationPrincipal MyUserDetail userDetail, @PathVariable int id) {
         User fromUser = userDetail.getUser();
         Optional<User> oToUser = mUserRepository.findById(id);
         User toUser = oToUser.get();
@@ -79,7 +80,7 @@ public class FollowController {
 
 
     @GetMapping("/follow/follow/{id}")
-    public String followFollow (@PathVariable int id, Model model){
+    public String followFollow(@PathVariable int id, Model model) {
 
 
         //팔로우 리스트  (ssar : 3) 1, 2, 4
@@ -88,19 +89,17 @@ public class FollowController {
         //팔로우 리스트 (cos : 1) 2, 3
         List<Follow> principalFollows = mFollowRepository.findByFromUserId(id);
 
-       for(Follow f1 : follows){ // 3번 돈다.
-           for(Follow f2 : principalFollows){
-               if(f1.getToUser().getId() == f2.getToUser().getId()){
-                   f1.setFollowState(true);
-               }
-           }
-       }
+        for (Follow f1 : follows) { // 3번 돈다.
+            for (Follow f2 : principalFollows) {
+                if (f1.getToUser().getId() == f2.getToUser().getId()) {
+                    f1.setFollowState(true);
+                }
+            }
+        }
         model.addAttribute("follows", follows);
 
         return "follow/follow";
     }
-
-
 
 
 }

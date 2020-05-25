@@ -25,11 +25,12 @@ public class TestController {
     private UserRepository mUserRepository;
 
     @GetMapping("/test/user/{id}")
-    public @ResponseBody User testUser(@PathVariable int id){
-     Optional<User>  oUser = mUserRepository.findById(id);
-     User user = oUser.get();
+    public @ResponseBody
+    User testUser(@PathVariable int id) {
+        Optional<User> oUser = mUserRepository.findById(id);
+        User user = oUser.get();
 
-     return user;
+        return user;
     }
 
     @GetMapping("/test/home")
@@ -38,7 +39,8 @@ public class TestController {
     }
 
     @GetMapping("/test/user")
-    public @ResponseBody User getUser() {
+    public @ResponseBody
+    User getUser() {
         User user = new User();
         user.setId(1);
         user.setUsername("cos");
@@ -69,7 +71,8 @@ public class TestController {
     }
 
     @GetMapping("/test/image")
-    public @ResponseBody Image getImage() {
+    public @ResponseBody
+    Image getImage() {
         User user = new User();
         user.setId(1);
         user.setUsername("cos");
@@ -88,7 +91,8 @@ public class TestController {
     }
 
     @GetMapping("/test/images")
-    public @ResponseBody List<Image> getImages(){
+    public @ResponseBody
+    List<Image> getImages() {
         User user = new User();
         user.setId(1);
         user.setUsername("cos");
@@ -119,7 +123,8 @@ public class TestController {
     }
 
     @GetMapping("/test/like")
-    public @ResponseBody Likes getLike() {
+    public @ResponseBody
+    Likes getLike() {
         User user = new User();
         user.setId(1);
         user.setUsername("cos");
@@ -144,31 +149,32 @@ public class TestController {
 
 
     @GetMapping("/test/login")
-    public String testLogin(){
+    public String testLogin() {
         return "auth/login";
     }
 
     @GetMapping("/test/join")
-    public String testJoin(){
+    public String testJoin() {
         return "auth/join";
     }
 
     @GetMapping("/test/profile")
-    public String testProfile(){
-        return"user/profile";
+    public String testProfile() {
+        return "user/profile";
     }
 
     @GetMapping("/test/profile_Edit")
-    public String testProfileEdit(){
-        return"user/profile_edit";
+    public String testProfileEdit() {
+        return "user/profile_edit";
     }
 
     @GetMapping("/test/feed")
-    public String testFeed(){
+    public String testFeed() {
         return "image/feed";
     }
+
     @GetMapping("/test/image_upload")
-    public String testImage_upload(){
+    public String testImage_upload() {
         return "image/image_upload";
     }
 
@@ -176,7 +182,6 @@ public class TestController {
     public String testExplore() {
         return "image/explore";
     }
-
 
 
 }

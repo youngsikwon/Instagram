@@ -33,12 +33,12 @@
                 <c:if test="${principal.user_id ne follow.toUser.id}">
                 <c:choose>
                 <c:when test="${follow.followState eq true}">
-                <button  onclick="follow(false, ${follow.toUser.id}, ${status.count})"
+                <button onclick="follow(false, ${follow.toUser.id}, ${status.count})"
                         class="following_btn">팔로잉
                 </button>
                 </c:when>
                 <c:otherwise>
-                <button  onclick="follow(false, ${follow.toUser.id}, ${status.count})"
+                <button onclick="follow(false, ${follow.toUser.id}, ${status.count})"
                         class="follow_btn">팔로우
                 </button>
                 </c:otherwise>
