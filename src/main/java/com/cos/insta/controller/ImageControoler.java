@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -44,7 +45,8 @@ public class ImageControoler {
    }
 
    @PostMapping("/image/uploadProc")
-   public String imageUploadProc(
+   public @ResponseBody Image
+   imageUploadProc(
           @AuthenticationPrincipal MyUserDetail userDetail,
           @RequestParam("file") MultipartFile file,
           @RequestParam("caption") String caption,
@@ -67,10 +69,7 @@ public class ImageControoler {
 
        User principal = userDetail.getUser();
 
-
-
        Image image = new Image();
-
        image.setCaption(caption);
        image.setLocation(location);
        image.setUser(principal);
@@ -91,7 +90,9 @@ public class ImageControoler {
          t.setImage(image);
          mTagRepository.save(t)
       }
-       return "redirect:/";
+
+      Image i = mImageRepository.findById(id);
+       return image;
 
 
 
