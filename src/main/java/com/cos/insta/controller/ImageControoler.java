@@ -2,10 +2,15 @@ package com.cos.insta.controller;
 
 
 import com.cos.insta.model.Image;
+import com.cos.insta.model.Tag;
 import com.cos.insta.model.User;
+import com.cos.insta.repository.ImageRepository;
+import com.cos.insta.repository.TagRepository;
 import com.cos.insta.service.MyUserDetail;
+import com.cos.insta.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +22,19 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
 public class ImageControoler {
 
    private static final Logger log = LoggerFactory.getLogger(ImageControoler.class);
+
+   @Autowired
+   private ImageRepository mImageRepository;
+
+   @Autowired
+   private TagRepository mTagRepository;
 
    @GetMapping({"/", "image/feed"})
    public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail) {
@@ -44,8 +56,6 @@ public class ImageControoler {
        UUID uuid = UUID.randomUUID();
        String uuidFilename = file.getOriginalFilename()+"_"+uuid;
 
-       String fileRealPath = "";
-
        Path filePath = Paths.get(fileRealPath+uuidFilename);
 
 
@@ -66,9 +76,21 @@ public class ImageControoler {
        image.setUser(principal);
        image.setPostImage(filePath.toString());
 
+      mImageRepository.save(image);
+
+
 
        //Tag 객체 집어 넣겠음.
 
+      List<String> tagList = Utils.tagParser(tags);
+
+
+      for(String tag : tagList){
+         Tag t = new Tag();
+         t.setName(tag);
+         t.setImage(image);
+         mTagRepository.save(t)
+      }
        return "redirect:/";
 
 
