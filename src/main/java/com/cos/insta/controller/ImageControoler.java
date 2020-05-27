@@ -1,22 +1,80 @@
 package com.cos.insta.controller;
 
 
+import com.cos.insta.model.Image;
+import com.cos.insta.model.User;
 import com.cos.insta.service.MyUserDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
 @Controller
 public class ImageControoler {
 
-    private static final Logger log = LoggerFactory.getLogger(ImageControoler.class);
+   private static final Logger log = LoggerFactory.getLogger(ImageControoler.class);
 
-    @GetMapping({"/", "image/feed"})
-    public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail) {
+   @GetMapping({"/", "image/feed"})
+   public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail) {
 
-        log.info("Username : " + userDetail.getUsername());
-        return "image/feed";
-    }
+      log.info("Username : " + userDetail.getUsername());
+      return "image/feed";
+   }
+
+   @PostMapping("/image/uploadProc")
+   public String imageUploadProc(
+          @AuthenticationPrincipal MyUserDetail userDetail,
+          @RequestParam("file") MultipartFile file,
+          @RequestParam("caption") String caption,
+          @RequestParam("location") String location,
+          @RequestParam("tags") String tags
+
+   ){
+       // 이미지 업로드 수행
+       UUID uuid = UUID.randomUUID();
+       String uuidFilename = file.getOriginalFilename()+"_"+uuid;
+
+       String fileRealPath = "";
+
+       Path filePath = Paths.get(fileRealPath+uuidFilename);
+
+
+       try {
+           Files.write(filePath, file.getBytes()); //하드디스크기록
+       }catch (IOException e){
+           e.printStackTrace();
+       }
+
+       User principal = userDetail.getUser();
+
+
+
+       Image image = new Image();
+
+       image.setCaption(caption);
+       image.setLocation(location);
+       image.setUser(principal);
+       image.setPostImage(filePath.toString());
+
+
+       //Tag 객체 집어 넣겠음.
+
+       return "redirect:/";
+
+
+
+
+
+
+   }
 }
