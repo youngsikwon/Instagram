@@ -5,10 +5,7 @@
   max-width: 1000px;
   font-size: 16px;
 }
-.profile_start a {
-  text-decoration: none;
-  color: black;
-}
+
 #profile .profile__header {
   display: flex;
   justify-content: space-between;
@@ -47,19 +44,7 @@
   margin-right: 10px;
 }
 
-.propfile_edit_btn {
-  border: 0;
-  color: white;
-  font-weight: 600;
-  padding: 5px 15px;
-  background: #3c88de;
-
-  border-radius: 3px;
-  font-size: 14px;
-  border: 1px solid rgba(0, 0, 0, .0975);
-}
-
-.propfile_follow_btn {
+.profile__title a button {
   border: 0;
   font-weight: 600;
   padding: 5px 15px;
@@ -203,4 +188,3 @@
 .profile__overlay-link:hover {
   background: #efefef;
 }
-

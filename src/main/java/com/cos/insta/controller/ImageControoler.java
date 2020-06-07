@@ -15,14 +15,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.print.Pageable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -46,9 +51,15 @@ public class ImageControoler {
    private TagRepository mTagRepository;
 
    @GetMapping({"/", "image/feed"})
-   public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail) {
+   public String imageFeed(
+          @AuthenticationPrincipal MyUserDetail userDetail,
+          @PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC)Pageable pageable, Model model) {
 
-      log.info("Username : " + userDetail.getUsername());
+// 내가 팔로우한 친구들의 사진
+      Page<Image> pageImages = mImageRepository.findImage(userDetail.getUser().getId(), pageable);
+
+      List<Image> images = pageImages.getContent();
+      model.addAttribute("images", images);
       return "image/feed";
    }
 

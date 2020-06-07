@@ -24,22 +24,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Likes {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    @JsonIgnoreProperties({"images", "password", "name", "website", "bio", "email", "phone", "gender", "createDate", "updateDate", "provider", "providerId"})
-    private User user; // id, username, profileImage
-
-    @ManyToOne
-    @JoinColumn(name = "imageId")
-    @JsonIgnoreProperties({"tags", "user", "likes"})
-    private Image image; // 기본 :  image_id
-
-    @CreationTimestamp
-    private Timestamp createDate;
-    @CreationTimestamp
-    private Timestamp updateDate;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	@JsonIgnoreProperties({"images", "password", "name", "website", "bio", "email", "phone", "gender", "createDate", "updateDate", "provider", "providerId"})
+	private User user; // id, username, profileImage
+	
+	@ManyToOne 
+	@JoinColumn(name = "imageId")
+	@JsonIgnoreProperties({"tags", "user", "likes"})
+	private Image image; // 기본 :  image_id
+	
+	@CreationTimestamp
+	private Timestamp createDate;
+	@CreationTimestamp
+	private Timestamp updateDate;
 }
