@@ -1,44 +1,25 @@
-# Instagram Project
-
- - 사이드 프로젝트는 천천히 업로딩할 예정입니다,
-
-
-
->I want a spring boot novice to grow up by looking at this example.
-
->Pay close attention.
-
-
-- Security base
-
-
-- Model  -> Image, Tag, User, Likes, Follow
-
-
-- WEB 
- - POST 방식 (1) email (2) name (3) username (4) password
+# Instagram 
+ - Skill : SPringboot, JPA, MySQL, Security, JSP
  
- 
- - 처리
-  - 매개변수 : User user
-  - 패스워드 : BCryptPasswordEncoder로 인코딩해서 다시 setPassword(인코딩패스워드);
-  - save() 함수 호출
+## Side project
 
-> 3/2 css, js 추가   | auth -> join, login 추가
- - 3/4 -> Feed
- - 3/10 Profile 추가 및 follow follower 추가 예정< 3/11>
- 
- 
- 3/15 
-  -> Profile_Edit[Update]  수정
-  
- # 5/14------- 
- 
- - fetch API를 사용하여 팔로우 구현
- 
- 5/24 
-  - 팔로우, 팔로워 리스트 구현 
-  
-  
-  
-  
+ - 회원가입, 로그인 구현
+ - 팔로우, 언팔로우 이벤트 구현
+ - Spring security taglibs를 이용하여 principal 접근
+ - Follow, follower 리스트 구현
+ - 동적 팔로우, 언팔로우 이벤트 구현
+ - 이미지, 태그 업로드하기
+ - 이미지 리스트 완성
+ - 이미지 액박 오류 수정
+ - feed 무한스크롤 테스트
+ - 이미지 페이징 무한 스크롤 구현
+ - 프로파일 이미지 업로드
+ - 이미지 좋아요 하기
+ - 프로파일 보이게 하기(수정)
+ - 프로파일 페이지 완성
+ - 프로파일 수정
+ - 카카오 로그인 구현(OAuth2-Client 사용 안함)
+ - 좋아요 알람 보기
+ - 좋아요 동적 카운트 증가
+----------------------------------------------------
+# 현재까지 인스타그램 사이드 프로젝트 진행을 해보았습니다. 
