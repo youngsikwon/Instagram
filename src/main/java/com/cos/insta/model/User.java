@@ -34,7 +34,7 @@ public class User {
     // (1) findById()만 동작
     // (2) findByUserInfo() 제외
     @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties({"user", "tags", "likes"})
     private List<Image> images = new ArrayList<>();
 
 

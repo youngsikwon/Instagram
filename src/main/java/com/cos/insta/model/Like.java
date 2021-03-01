@@ -20,13 +20,13 @@ public class Like  {
 
     @ManyToOne
     @JoinColumn(name = "userId")
-    @JsonIgnoreProperties({"password","name", "website", "bio", "email", "phone", "gender","createDate", "updateDate"})
+    @JsonIgnoreProperties({"images","password","name", "website", "bio", "email", "phone", "gender","createDate", "updateDate"})
     private User user; //Id, username. profileImage
 
 
     @ManyToOne
     @JoinColumn(name = "imageId")
-    @JsonIgnoreProperties({"password"})
+    @JsonIgnoreProperties({"user", "likes","tags"})
     private Image image; // 기본 : image_id
 
 
