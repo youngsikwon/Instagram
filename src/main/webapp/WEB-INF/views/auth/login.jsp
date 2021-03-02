@@ -20,19 +20,17 @@
     <div class="login__column">
         <div class="login__box">
             <img src="/images/loginLogo.png" />
-            <form action="/auth/joinProc" method="post" class="login__form">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="text" name="name" placeholder="Name" required>
+            <form action="/auth/loginProc" method="post" class="login__form">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <input type="submit" value="Sign up">
+                <input type="submit" value="Login">
             </form>
         </div>
         <div class="login__box">
         <span class="login__text">
           Do you have an account? <br />
         </span>
-            <a class="login__blue-link" href="/auth/login">Sign in</a>
+            <a class="login__blue-link" href="/auth/join">Sign up</a>
         </div>
         <div class="login__t-box">
         <span class="login__text">
