@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,23 +7,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile | Jejugram</title>
+    <title>Instagram</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-
-<%@ include file="../include/nav.jsp"%>
-
+<%@include file="../include/nav.jsp"%>
 <main id="profile">
     <header class="profile__header">
         <div class="avatar__container">
             <form id="frm_profile_img" action="/user/profileUpload" method="post">
                 <input type="file" name="profileImage" style="display: none;"/>
             </form>
-            <img src="images/avatar.jpg" id="profile_image" style="cursor:pointer" />
+            <img src="/images/avatar.jpg" id="profile_image" style="cursor:pointer" />
         </div>
         <div class="profile__info">
             <div class="profile__title">
@@ -56,7 +56,7 @@
         <div class="profile__photo-row">
             <div class="profile__photo">
                 <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
+                    <img src="/images/feedPhoto.jpg">
                     <div class="profile__photo-overlay">
               <span class="profile__photo-stat">
                 <i class="fa fa-heart"></i> 504
@@ -69,7 +69,7 @@
             </div>
             <div class="profile__photo">
                 <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
+                    <img src="/images/feedPhoto.jpg">
                     <div class="profile__photo-overlay">
               <span class="profile__photo-stat">
                 <i class="fa fa-heart"></i> 504
@@ -82,48 +82,7 @@
             </div>
             <div class="profile__photo">
                 <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
-                    <div class="profile__photo-overlay">
-              <span class="profile__photo-stat">
-                <i class="fa fa-heart"></i> 504
-              </span>
-                        <span class="profile__photo-stat">
-                <i class="fa fa-comment"></i> 22
-              </span>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="profile__photo-row">
-            <div class="profile__photo">
-                <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
-                    <div class="profile__photo-overlay">
-              <span class="profile__photo-stat">
-                <i class="fa fa-heart"></i> 504
-              </span>
-                        <span class="profile__photo-stat">
-                <i class="fa fa-comment"></i> 22
-              </span>
-                    </div>
-                </a>
-            </div>
-            <div class="profile__photo">
-                <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
-                    <div class="profile__photo-overlay">
-              <span class="profile__photo-stat">
-                <i class="fa fa-heart"></i> 504
-              </span>
-                        <span class="profile__photo-stat">
-                <i class="fa fa-comment"></i> 22
-              </span>
-                    </div>
-                </a>
-            </div>
-            <div class="profile__photo">
-                <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
+                    <img src="/images/feedPhoto.jpg">
                     <div class="profile__photo-overlay">
               <span class="profile__photo-stat">
                 <i class="fa fa-heart"></i> 504
@@ -138,7 +97,7 @@
         <div class="profile__photo-row">
             <div class="profile__photo">
                 <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
+                    <img src="/images/feedPhoto.jpg">
                     <div class="profile__photo-overlay">
               <span class="profile__photo-stat">
                 <i class="fa fa-heart"></i> 504
@@ -151,7 +110,7 @@
             </div>
             <div class="profile__photo">
                 <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
+                    <img src="/images/feedPhoto.jpg">
                     <div class="profile__photo-overlay">
               <span class="profile__photo-stat">
                 <i class="fa fa-heart"></i> 504
@@ -164,7 +123,48 @@
             </div>
             <div class="profile__photo">
                 <a href="image-detail.html">
-                    <img src="images/feedPhoto.jpg">
+                    <img src="/images/feedPhoto.jpg">
+                    <div class="profile__photo-overlay">
+              <span class="profile__photo-stat">
+                <i class="fa fa-heart"></i> 504
+              </span>
+                        <span class="profile__photo-stat">
+                <i class="fa fa-comment"></i> 22
+              </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="profile__photo-row">
+            <div class="profile__photo">
+                <a href="image-detail.html">
+                    <img src="/images/feedPhoto.jpg">
+                    <div class="profile__photo-overlay">
+              <span class="profile__photo-stat">
+                <i class="fa fa-heart"></i> 504
+              </span>
+                        <span class="profile__photo-stat">
+                <i class="fa fa-comment"></i> 22
+              </span>
+                    </div>
+                </a>
+            </div>
+            <div class="profile__photo">
+                <a href="image-detail.html">
+                    <img src="/images/feedPhoto.jpg">
+                    <div class="profile__photo-overlay">
+              <span class="profile__photo-stat">
+                <i class="fa fa-heart"></i> 504
+              </span>
+                        <span class="profile__photo-stat">
+                <i class="fa fa-comment"></i> 22
+              </span>
+                    </div>
+                </a>
+            </div>
+            <div class="profile__photo">
+                <a href="image-detail.html">
+                    <img src="/images/feedPhoto.jpg">
                     <div class="profile__photo-overlay">
               <span class="profile__photo-stat">
                 <i class="fa fa-heart"></i> 504
@@ -178,23 +178,7 @@
         </div>
     </div>
 </main>
-<footer>
-    <nav class="footer__nav">
-        <ul class="footer__list">
-            <li class="footer__item"><a href="#" class="footer__link">About us</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Support</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Blog</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Press</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Api</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Jobs</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Privacy</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Terms</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Directory</a></li>
-            <li class="footer__item"><a href="#" class="footer__link">Language</a></li>
-        </ul>
-    </nav>
-    <span class="footer__copyright">© 2017 jejugram</span>
-</footer>
+
 <div class="profile__overlay">
     <i class="fa fa-times"></i>
     <div class="profile__overlay-container">
@@ -205,9 +189,8 @@
         <a href="#" class="profile__overlay-link" id="cancel">Cancel</a>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="js/app.js"></script>
 
+<%@ include file="../include/footer.jsp"%>
 <script>
     $(function() {
         //이미지 클릭시 업로드창 실행

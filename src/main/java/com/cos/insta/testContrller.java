@@ -147,4 +147,37 @@ public class testContrller {
 
         return follows;
     }
+
+    @GetMapping("/test/explore")
+    public String testExplore(){
+        return "image/explore";
     }
+
+    @GetMapping("/test/login")
+    public String testLogin(){
+        return "auth/login";
+    }
+    @GetMapping("/test/join")
+    public String testJoin(){
+        return "auth/join";
+    }
+    @GetMapping("/test/profile")
+    public String testprofile(){
+        return "user/profile";
+    }
+
+    @GetMapping("/test/profile_eidt")
+    public String profile_eidt(){
+        return "user/profile_eidt";
+    }
+
+    @GetMapping("/test/feed")
+    public String testFeed(){
+        return "image/feed";
+    }
+
+    @GetMapping("/test/image_upload")
+    public String image_upload(){
+        return "image/image_upload";
+    }
+}
