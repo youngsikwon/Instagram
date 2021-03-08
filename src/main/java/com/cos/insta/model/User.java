@@ -1,6 +1,7 @@
 package com.cos.insta.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -20,7 +21,7 @@ public class User {
     private int id; //시퀀스
 
     private String username;//사용자 아이디
-
+    @JsonIgnore
     private String password;//암호화
     private String name; //사용자 이름
     private String website; //홈페이지 주소
