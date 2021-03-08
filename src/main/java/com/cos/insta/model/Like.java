@@ -14,25 +14,21 @@ public class Like  {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY   )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
 
     @ManyToOne
     @JoinColumn(name = "userId")
-    @JsonIgnoreProperties({"images","password","name", "website", "bio", "email", "phone", "gender","createDate", "updateDate"})
-    private User user; //Id, username. profileImage
-
+    @JsonIgnoreProperties({"images", "password", "name", "website", "bio", "email", "phone", "gender", "createDate", "updateDate"})
+    private User user; // id, username, profileImage
 
     @ManyToOne
     @JoinColumn(name = "imageId")
-    @JsonIgnoreProperties({"user", "likes","tags"})
-    private Image image; // 기본 : image_id
-
+    @JsonIgnoreProperties({"tags", "user", "likes"})
+    private Image image; // 기본 :  image_id
 
     @CreationTimestamp
     private Timestamp createDate;
     @CreationTimestamp
     private Timestamp updateDate;
-
 }

@@ -15,7 +15,8 @@ public class ImageController {
 
 
     @GetMapping({"/","/image/feed"})
-    public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail){
+    public String imageFeed(
+            @AuthenticationPrincipal MyUserDetail userDetail){
 
         log.info("username : "+ userDetail.getUsername());
         return "image/feed";

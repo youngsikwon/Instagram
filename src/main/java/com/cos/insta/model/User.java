@@ -1,6 +1,5 @@
 package com.cos.insta.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -11,36 +10,32 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Entity // JPA - ORM
+@Data //lombok
+@Entity //JPA -> ORM
 public class User {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; //시퀀스
-
-    private String username;//사용자 아이디
+    private int id; // 시퀀스
+    private String username; // 사용자 아이디
     @JsonIgnore
-    private String password;//암호화
-    private String name; //사용자 이름
-    private String website; //홈페이지 주소
-    private String bio; //자기소개
-    private String email; // 이메일
-    private String phone; // 핸드폰 번호
-    private String gender; //성별
-    private String profileImage;
+    private String password; // 암호화된 패스워드
+    private String name; // 사용자 이름
+    private String website; // 홈페이지 주소
+    private String bio; // 자기 소개
+    private String email;
+    private String phone;
+    private String gender;
+    private String profileImage; //프로파일 사진 경로+이름
 
-
-    // (1) findById()만 동작
+    // (1) findById() 때만 동작
     // (2) findByUserInfo() 제외
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties({"user", "tags", "likes"})
     private List<Image> images = new ArrayList<>();
 
-
     @CreationTimestamp // 자동으로 현재 시간이 세팅
     private Timestamp createDate;
-    @CreationTimestamp
+    @CreationTimestamp // 자동으로 현재 시간이 세팅
     private Timestamp updateDate;
 }

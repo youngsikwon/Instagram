@@ -18,7 +18,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
@@ -26,6 +26,7 @@ spring:
     properties:
       hibernate.enable_lazy_load_no_trans: true
       hibernate.format_sql: true
+    generate-ddl: true
 
   servlet:
     multipart:
@@ -42,7 +43,6 @@ spring:
     user:
       name: test
       password: 1234
-
 
 file:
   path: C:/src/instaclone/insta/src/main/resources/upload/
