@@ -36,37 +36,6 @@
                             <button onClick="follow(true, ${user.id})" class="profile_follow_btn">팔로우</button>
                         </c:otherwise>
                     </c:choose>
-                    <script>
-                        function follow(check){
-                            //true -> follow
-                            // false -> unFollow
-                            let url = "/follow/${user.id}";
-                            if(check){
-                                fetch(url, {
-                                    method: "POST"
-                                }).then(function(res){
-                                    return res.text();
-                                }).then(function(res){
-                                    if(res === "ok"){
-                                        let follow_check_el = document.querySelector("#follow_check");
-                                            follow_check_el.innerHTML = "<button onClick='follow(false, ${user.id})' class='profile_edit_btn'>팔로잉</button>";
-                                    }
-                                });
-                            }else{
-                                fetch(url, {
-                                    method: "POST"
-                                }).then(function(res){
-                                    return res.text();
-                                }).then(function(res){
-                                    if(res === "ok"){
-                                        let follow_check_el = document.querySelector("#follow_check");
-                                        follow_check_el.innerHTML = "<button onClick='follow(true, ${user.id})' class='profile_follow_btn'>팔로우</button>";
-                                    }
-
-                            }
-                        }
-                        }
-                    </script>
                 </div>
                 <a href="/user/edit/${user.id}">
                     <button class="profile_edit_btn">Edit Profile</button>
@@ -188,6 +157,7 @@
 
 
 <%@ include file="../include/footer.jsp"%>
+<script src="/js/follow.js"></script>
 
 <script>
     $(function() {
