@@ -62,18 +62,46 @@ public class FollowController {
     }
 
     @GetMapping("/follow/follower/{id}")
-    public String followFollower(@PathVariable int id){
+    public String followFollower(@PathVariable int id,
+                                 @AuthenticationPrincipal MyUserDetail userDetail,
+                                 Model model){
+
             //팔로워 리스트
-        return "follow/follow";
+        List<Follow> followers = mFollowRepository.findByToUserId(id);
+
+        List<Follow> principalFollows = mFollowRepository.findByFromUserId(userDetail.getUser().getId());
+
+        for (Follow f1 : followers) { // 3번 돈다.
+            for (Follow f2 : principalFollows) {
+                if (f1.getToUser().getId() == f2.getToUser().getId()) {
+                    f1.setFollowState(true);
+                }
+            }
+        }
+
+        model.addAttribute("followers", followers);
+        return "follow/follower";
 
     }
     @GetMapping("/follow/follow/{id}")
-    public String followFollow(@PathVariable int id, Model model){
+    public String followFollow(@PathVariable int id, @AuthenticationPrincipal MyUserDetail userDetail, Model model) {
 
-        //팔로우 리스트
-
+        // 팔로우 리스트 (ssar : 3) 1,2,4
         List<Follow> follows = mFollowRepository.findByFromUserId(id);
-        model.addAttribute("follows",follows);
+
+        // 팔로우 리스트 (cos : 1) 2, 3
+        List<Follow> principalFollows = mFollowRepository.findByFromUserId(userDetail.getUser().getId());
+
+        for (Follow f1 : follows) { // 3번 돈다.
+            for (Follow f2 : principalFollows) {
+                if (f1.getToUser().getId() == f2.getToUser().getId()) {
+                    f1.setFollowState(true);
+                }
+            }
+        }
+
+        model.addAttribute("follows", follows);
+
         return "follow/follow";
 
     }
