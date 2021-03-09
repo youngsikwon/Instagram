@@ -15,7 +15,6 @@
 <body>
 <%@include file="../include/nav.jsp"%>>
 
-
 <main id="edit-profile">
     <div class="edit-profile__container u-default-box">
 

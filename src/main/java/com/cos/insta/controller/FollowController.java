@@ -9,6 +9,7 @@ import com.cos.insta.service.MyUserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,19 +58,22 @@ public class FollowController {
         mFollowRepository.deleteByFromUserIdAndToUserId(fromUser.getId(), toUser.getId());
 
         List<Follow> follows = mFollowRepository.findAll();
-        return "Ok Follow Cehck";
+        return "Ok Follow Cehck"; //ResponseEntify로 수정
     }
 
     @GetMapping("/follow/follower/{id}")
     public String followFollower(@PathVariable int id){
-            //팔로우 리스트
+            //팔로워 리스트
         return "follow/follow";
 
     }
     @GetMapping("/follow/follow/{id}")
-    public String followFollow(@PathVariable int id){
+    public String followFollow(@PathVariable int id, Model model){
 
-        //팔로잉 리스트
+        //팔로우 리스트
+
+        List<Follow> follows = mFollowRepository.findByFromUserId(id);
+        model.addAttribute("follows",follows);
         return "follow/follow";
 
     }

@@ -15,57 +15,24 @@
 <%@include file="../include/nav.jsp"%>
 
 <main id="explore">
+
     <ul class="explore__users u-default-box">
+        <c:forEach var="follow" items="${follows}">
+
+
         <li class="explore__user">
             <div class="explore__content">
                 <img src="/images/avatar.jpg" />
                 <div class="explore__info">
-                    <span class="explore__username">serranoarevalo</span>
-                    <span class="explore__full-name">Nicolás Serrano Arévalo</span>
+                    <span class="explore__username">${follow.toUser.username}</span>
                 </div>
             </div>
-            <button>Follow</button>
+            <button>팔로잉</button>
         </li>
-        <li class="explore__user">
-            <div class="explore__content">
-                <img src="/images/avatar.jpg" />
-                <div class="explore__info">
-                    <span class="explore__username">serranoarevalo</span>
-                    <span class="explore__full-name">Nicolás Serrano Arévalo</span>
-                </div>
-            </div>
-            <button>Follow</button>
-        </li>
-        <li class="explore__user">
-            <div class="explore__content">
-                <img src="/images/avatar.jpg" />
-                <div class="explore__info">
-                    <span class="explore__username">serranoarevalo</span>
-                    <span class="explore__full-name">Nicolás Serrano Arévalo</span>
-                </div>
-            </div>
-            <button>Follow</button>
-        </li>
-        <li class="explore__user">
-            <div class="explore__content">
-                <img src="/images/avatar.jpg" />
-                <div class="explore__info">
-                    <span class="explore__username">serranoarevalo</span>
-                    <span class="explore__full-name">Nicolás Serrano Arévalo</span>
-                </div>
-            </div>
-            <button>Follow</button>
-        </li>
-        <li class="explore__user">
-            <div class="explore__content">
-                <img src="/images/avatar.jpg" />
-                <div class="explore__info">
-                    <span class="explore__username">serranoarevalo</span>
-                    <span class="explore__full-name">Nicolás Serrano Arévalo</span>
-                </div>
-            </div>
-            <button>Follow</button>
-        </li>
+        </c:forEach>
+
+
+
     </ul>
 </main>
 
