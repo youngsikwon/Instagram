@@ -69,11 +69,11 @@ public class FollowController {
             //팔로워 리스트
         List<Follow> followers = mFollowRepository.findByToUserId(id);
 
-        List<Follow> principalFollows = mFollowRepository.findByFromUserId(userDetail.getUser().getId());
+        List<Follow> principalFollows = mFollowRepository.findByToUserId(userDetail.getUser().getId());
 
         for (Follow f1 : followers) { // 3번 돈다.
             for (Follow f2 : principalFollows) {
-                if (f1.getToUser().getId() == f2.getToUser().getId()) {
+                if (f1.getFromUser().getId() == f2.getToUser().getId()) {
                     f1.setFollowState(true);
                 }
             }

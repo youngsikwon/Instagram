@@ -71,7 +71,6 @@ public class UserController {
         // 4번 임시(수정해야함)
         Optional<User> oUser = mUserRepository.findById(id);
         User user = oUser.get();
-        log.info("test"+ user.getId());
         model.addAttribute("user", user);
 
         // 5번

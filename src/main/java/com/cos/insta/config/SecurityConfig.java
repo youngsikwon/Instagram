@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 @Configuration
 @EnableWebSecurity //스프링 시큐리티 필터에 등록하는 어노테이션
 @EnableGlobalMethodSecurity(prePostEnabled=true)
@@ -28,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.cors().disable();
         http.authorizeRequests()
-                .antMatchers("/user/**", "/follow/**", "/image/**","/")
+                .antMatchers("/", "/user/**", "/follow/**", "/image/**")
                 .authenticated()
                 .anyRequest()
                 .permitAll()
@@ -36,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/auth/login")
                 .loginProcessingUrl("/auth/loginProc")
-                .defaultSuccessUrl("/image/feed");
+                .defaultSuccessUrl("/");
     }
 
     @Autowired
@@ -47,4 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(encodePWD());
     }
+
+
+
 }
