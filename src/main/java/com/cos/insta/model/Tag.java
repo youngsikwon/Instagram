@@ -16,6 +16,7 @@ public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; //시퀀스
+    private String name;
 
 
     @ManyToOne(fetch = FetchType.LAZY)

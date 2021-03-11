@@ -3,7 +3,10 @@ package com.cos.insta.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -13,16 +16,17 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Image {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY   )
     private int id;
-    private String Location;// 사진 찎은 위치
+    private String location;// 사진 찎은 위치
     private String caption; // 사진 설명
-    private String filleName; // 사진 파일 이름
-    private String filePath; // 사진 경로
     private String postImage; // 사진 경로 + 이름
 
 
@@ -39,6 +43,7 @@ public class Image {
     // 2 Like List
     @OneToMany(mappedBy = "image")
     private List<Like> likes = new ArrayList<>();
+
 
 
 

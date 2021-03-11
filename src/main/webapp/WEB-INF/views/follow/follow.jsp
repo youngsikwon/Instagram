@@ -21,24 +21,24 @@
 
         <c:forEach var="follow" items="${follows}" varStatus="status">
             <li class="explore__user">
-
                 <div class="explore__content">
-                    <img src="/upload/${follow.toUser.profileImage}" onerror="this.onerror=null; this.src='/images/avatar.jpg'"/>
+                    <img src="/images/avatar.jpg"/>
                     <div class="explore__info">
                         <span class="explore__username">${follow.toUser.username}</span>
                     </div>
                 </div>
-
+                <div id="follow_item_${status.count}">
                     <c:if test="${principal.user.id ne follow.toUser.id}">
                         <c:choose>
                             <c:when test="${follow.followState eq true}">
-                                <button onClick="follow(false, ${follow.toUser.id})" class="following_btn">팔로잉</button>
+                                <button onClick="follow(false, ${follow.toUser.id}, ${status.count})" class="following_btn">팔로잉</button>
                             </c:when>
                             <c:otherwise>
-                                <button onClick="follow(true, ${follow.toUser.id})" class="follow_btn">팔로우</button>
+                                <button onClick="follow(true, ${follow.toUser.id}, ${status.count})" class="follow_btn">팔로우</button>
                             </c:otherwise>
                         </c:choose>
                     </c:if>
+                </div>
 
             </li>
         </c:forEach>
