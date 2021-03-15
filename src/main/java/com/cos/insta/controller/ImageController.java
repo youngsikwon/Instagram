@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,7 +33,6 @@ public class ImageController {
 
     @Autowired
     private ImageRepository mImageRepository;
-
     @Autowired
     private TagRepository mTagRepository;
 
@@ -42,64 +42,57 @@ public class ImageController {
 
     @GetMapping({"/","/image/feed"})
     public String imageFeed(
-            @AuthenticationPrincipal MyUserDetail userDetai){
-        log.info("username : " + userDetai.getUsername());
-
-        return "image/feed";
+            @AuthenticationPrincipal MyUserDetail userDetail){
+        log.info("username : " + userDetail.getUsername());
+        return "igema/feed";
     }
 
 
-    @GetMapping({"/","/image/uploadProc"})
-    public String imageUploadProc(
-            @AuthenticationPrincipal MyUserDetail userDetail,
-            @RequestParam("file")MultipartFile file,
-            @RequestParam("caption") String caption,
-            @RequestParam("location") String location,
-            @RequestParam("tags") String tags){
+    @PostMapping("/image/uploadProc")
+    public String imageUploadProc(@AuthenticationPrincipal MyUserDetail userDetail,
+                                  @RequestParam("file") MultipartFile file, @RequestParam("caption") String caption,
+                                  @RequestParam("location") String location, @RequestParam("tags") String tags) {
 
-        log.info("username : "+ userDetail.getUsername());
-
-        //업로드
+        // 이미지 업로드 수행
         UUID uuid = UUID.randomUUID();
-        String uuidFilename = file.getOriginalFilename() + "_" + uuid;
+        String uuidFilename = uuid + "_" + file.getOriginalFilename();
 
-        String fileRealPath = "";
+        Path filePath = Paths.get(fileRealPath + uuidFilename);
 
-        Path filePath = Paths.get(fileRealPath+uuidFilename);
-
-        try{
-            Files.write(filePath, file.getBytes()); // 하드디스크 기
-        }  catch (IOException e){
+        try {
+            Files.write(filePath, file.getBytes()); // 하드디스크 기록
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
         User principal = userDetail.getUser();
 
-       Image image = new Image();
+        Image image = new Image();
+        image.setCaption(caption);
+        image.setLocation(location);
+        image.setUser(principal);
+        image.setPostImage(uuidFilename);
 
-       image.setCaption(caption);
-       image.setLocation(location);
-       image.setUser(principal);
-       image.setPostImage(filePath.toString());
+        // <img src="/upload/파일명" />
 
         mImageRepository.save(image);
 
-       // Tag 객체
-
+        // Tag 객체 생성 집어 넣겠음.
         List<String> tagList = Utils.tagParser(tags);
 
-            for(String tag: tagList){
-                Tag t = new Tag();
-                t.setName(tag);
-                t.setImage(image);
-                mTagRepository.save(t);
-                image.getTags().add(t);
-            }
+        for (String tag : tagList) {
+            Tag t = new Tag();
+            t.setName(tag);
+            t.setImage(image);
+            mTagRepository.save(t);
+            image.getTags().add(t);
+        }
 
         return "redirect:/";
     }
 
 
-    @GetMapping("/image./upload")
+    @GetMapping("/image/upload")
     public String imageUpload(){
         return "image/image_upload";
     }
