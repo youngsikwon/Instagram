@@ -45,4 +45,6 @@ spring:
       password: 1234
 
 file:
-  path: C:/src/instaclone/insta/src/main/resources/static/upload/
+  path: /Users/wonyoungsik/mysql/Instagram/src/main/resources/static/upload
+
+

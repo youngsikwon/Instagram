@@ -3,10 +3,7 @@ package com.cos.insta.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -16,9 +13,6 @@ import java.util.List;
 
 @Data
 @Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Image {
 
 
@@ -40,6 +34,7 @@ public class Image {
     @OneToMany(mappedBy = "image")
     @JsonManagedReference
     private List<Tag> tags = new ArrayList<>();
+
     // 2 Like List
     @OneToMany(mappedBy = "image")
     private List<Like> likes = new ArrayList<>();

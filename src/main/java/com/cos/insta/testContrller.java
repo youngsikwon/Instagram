@@ -5,8 +5,13 @@ import com.cos.insta.model.Follow;
 import com.cos.insta.model.Image;
 import com.cos.insta.model.Like;
 import com.cos.insta.model.User;
+import com.cos.insta.repository.ImageRepository;
 import com.cos.insta.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +27,21 @@ public class testContrller {
     @Autowired
     private UserRepository mUserRepository;
 
+    @Autowired
+    private ImageRepository mImageRepository;
+
+
+    @GetMapping("/test/image/feed")
+    public @ResponseBody List<Image> testImageFeed
+            (@PageableDefault(size=2, sort = "id",
+            direction = Sort.Direction.DESC) Pageable pageable){
+        int userId = 1;
+
+        Page<Image> images =
+                mImageRepository.findImage(userId, pageable);
+
+        return images.getContent();
+    }
     @GetMapping("/test/user/{id}")
     public @ResponseBody User testUser (@PathVariable int id){
         Optional<User> oUser = mUserRepository.findById(id);
@@ -193,6 +213,10 @@ public class testContrller {
     public String testExplore(){
         return "image/explore";
     }
+
+
+
+
 
 
 

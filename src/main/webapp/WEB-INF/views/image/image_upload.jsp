@@ -1,23 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/image-upload.css">
+    <title>Costagram</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet">
     <link rel="shortcut icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="/css/styles.css">
-
-
+    <link rel="stylesheet" href="/css/image-upload.css">
 </head>
 <body>
 
-<%@ include file="../include/nav.jsp"%>
+<%@ include file="../include/nav.jsp" %>
 
 <div class="container">
     <div class="box">
@@ -34,12 +29,10 @@
             </div>
             <!-- 섬네일은 아래 주소 참고 -->
             <!-- https://medium.com/@asadise/create-thumbnail-for-an-image-in-spring-framework-49776c873ea1 -->
-            <form action="/images/uploadProc" method="post"
-                  enctype="multipart/form-data">
+            <form action="/image/uploadProc" method="post" enctype="multipart/form-data">
                 <table class="table">
                     <tr>
-                        <td><input id="input_img" type="file" name="file"
-                                   placeholder="사진파일"></td>
+                        <td><input id="input_img" type="file" name="file" placeholder="사진파일"></td>
                     </tr>
                     <tr>
                         <td>
@@ -70,8 +63,7 @@
     </div>
 </div>
 
-
-
+<%@ include file="../include/footer.jsp" %>
 <script>
     var sel_file;
     $(document).ready(function() {
