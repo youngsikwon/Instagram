@@ -47,21 +47,19 @@ public class ImageController {
 
 
 
-    @GetMapping({"/","/image/feed"})
-    public String imageFeed
-            (
-                    @AuthenticationPrincipal MyUserDetail userDetail
-                   , @PageableDefault(size=3, sort = "id",
-            direction = Sort.Direction.DESC) Pageable pageable,
-                    Model model){
-        log.info("username :" + userDetail.getUser() );
+    @GetMapping({ "/", "/image/feed" })
+    public String imageFeed(@AuthenticationPrincipal MyUserDetail userDetail,
+                            @PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, Model model) {
+        //log.info("username :" + userDetail.getUser() );
 
 
         //내가 팔로우한 친구들의 사진
-        Page<Image> pageImages = mImageRepository.findImage(userDetail.getUser().getId(), pageable) ;
+        Page<Image> pageImages = mImageRepository.findImage(userDetail.getUser().getId(), pageable);
 
         List<Image> images = pageImages.getContent();
+
         model.addAttribute("images", images);
+
         return "image/feed";
     }
 
@@ -73,22 +71,14 @@ public class ImageController {
 
     @PostMapping("/image/uploadProc")
     public String imageUploadProc(@AuthenticationPrincipal MyUserDetail userDetail,
-                                  @RequestParam("file") MultipartFile file,
-                                  @RequestParam("caption") String caption,
-                                  @RequestParam("location") String location,
-                                  @RequestParam("tags") String tags) {
+                                  @RequestParam("file") MultipartFile file, @RequestParam("caption") String caption,
+                                  @RequestParam("location") String location, @RequestParam("tags") String tags) throws IOException {
 
         // 이미지 업로드 수행
         UUID uuid = UUID.randomUUID();
         String uuidFilename = uuid + "_" + file.getOriginalFilename();
-
         Path filePath = Paths.get(fileRealPath + uuidFilename);
-
-        try {
-            Files.write(filePath, file.getBytes()); // 하드디스크 기록
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Files.write(filePath, file.getBytes());
 
         User principal = userDetail.getUser();
 
@@ -98,11 +88,8 @@ public class ImageController {
         image.setUser(principal);
         image.setPostImage(uuidFilename);
 
-        // <img src="/upload/파일명" />
-
         mImageRepository.save(image);
 
-        // Tag 객체 생성 집어 넣겠음.
         List<String> tagList = Utils.tagParser(tags);
 
         for (String tag : tagList) {
@@ -112,7 +99,6 @@ public class ImageController {
             mTagRepository.save(t);
             image.getTags().add(t);
         }
-
         return "redirect:/";
     }
 
