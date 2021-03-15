@@ -1,4 +1,3 @@
-
 package com.cos.insta.repository;
 
 import org.springframework.data.domain.Page;
@@ -15,10 +14,5 @@ public interface ImageRepository extends JpaRepository<Image, Integer>{
                     value = "select * from image where userId in (select toUserId from follow where fromUserId = ?1) or userId = ?1", nativeQuery = true
             )
     Page<Image> findImage(int userId, Pageable pageable);
-	
-	/* 태그 검색 해볼 사람 해보기
-	 * select * from image where id in (
-			select imageId from tag where name = '연기자'
-		);
-	 */
 }
+
