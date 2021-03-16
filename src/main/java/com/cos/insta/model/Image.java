@@ -37,13 +37,16 @@ public class Image {
 
     // 2 Like List
     @OneToMany(mappedBy = "image")
-    private List<Like> likes = new ArrayList<>();
+    private List<Likes> likes = new ArrayList<>();
 
 
 
 
     @Transient // DB에 영향을 미치지 않는다.
     private int likeCount;
+
+    @Transient
+    private boolean heart;
 
     @CreationTimestamp
     private Timestamp createDate;

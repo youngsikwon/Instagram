@@ -1,10 +1,7 @@
 package com.cos.insta;
 
 
-import com.cos.insta.model.Follow;
-import com.cos.insta.model.Image;
-import com.cos.insta.model.Like;
-import com.cos.insta.model.User;
+import com.cos.insta.model.*;
 import com.cos.insta.repository.ImageRepository;
 import com.cos.insta.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,7 +108,8 @@ public class testContrller {
     }
 
     @GetMapping("/test/like")
-    public @ResponseBody Like getLike() {
+    public @ResponseBody
+    Likes getLike() {
         User user = new User();
         user.setId(1);
         user.setUsername("cos");
@@ -126,7 +124,7 @@ public class testContrller {
         img1.setLocation("부산 서면");
         img1.setUser(user);
 
-        Like like = new Like();
+        Likes like = new Likes();
         like.setId(1);
         like.setUser(user);
         like.setImage(img1);
