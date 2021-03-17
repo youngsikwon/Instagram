@@ -2,6 +2,7 @@ package com.cos.insta.controller;
 
 import com.cos.insta.model.User;
 import com.cos.insta.repository.FollowRepository;
+import com.cos.insta.repository.LikesRepository;
 import com.cos.insta.repository.UserRepository;
 import com.cos.insta.service.MyUserDetail;
 import org.slf4j.Logger;
@@ -39,19 +40,45 @@ public class UserController {
     @Autowired
     private FollowRepository mFollowRepository;
 
+    @Autowired
+    private LikesRepository mLikesRepository;
+
     @Value("${file.path}")
     private String fileRealPath;
 
+    @PostMapping("/user/profileUpload")
+    public String userProfileUpload
+            (
+                    @RequestParam("profileImage")MultipartFile file,
+                    @AuthenticationPrincipal MyUserDetail userDetail
+            )throws IOException
+    {
+        User principal = userDetail.getUser();
+
+
+        UUID uuid = UUID.randomUUID();
+        String uuidFilename = uuid + "_"+ file.getOriginalFilename();
+        Path filePath = Paths.get(fileRealPath + uuidFilename);
+        Files.write(filePath, file.getBytes());
+
+        principal.setProfileImage(uuidFilename);
+
+
+        mUserRepository.save(principal);
+
+        return "redirect:/user/"+principal.getId();
+    }
+    //로그인
     @GetMapping("/auth/login")
     public String authLogin() {
         return "auth/login";
     }
-
+    //회원가입
     @GetMapping("/auth/join")
     public String authJoin() {
         return "auth/join";
     }
-
+    //회원가입로직
     @PostMapping("/auth/joinProc")
     public String authJoinProc(User user) {
         String rawPassword = user.getPassword();
@@ -64,7 +91,7 @@ public class UserController {
 
         return "redirect:/auth/login";
     }
-
+    //프로필
     @GetMapping("/user/{id}")
     public String profile(
             @PathVariable int id,
@@ -83,6 +110,20 @@ public class UserController {
         Optional<User> oUser = mUserRepository.findById(id);
         User user = oUser.get();
         model.addAttribute("user", user);
+
+        // 1. ImageCount
+        int imageCount = user.getImages().size();
+        model.addAttribute("imageCount", imageCount);
+
+        // 2. followCount (select count(*) from follow where fromUserId = 1)
+        int followCount =
+                mFollowRepository.countByFromUserId(user.getId());
+        model.addAttribute("followCount", followCount);
+
+        // 3. followerCount (select count(*) from follower where toUserId = 1)
+        int followerCount =
+                mFollowRepository.countByToUserId(user.getId());
+        model.addAttribute("followerCount", followerCount);
 
         // 5번
         User principal = userDetail.getUser();
@@ -103,28 +144,7 @@ public class UserController {
         return "user/profile_edit";
     }
 
-    @PostMapping("/user/profileUpload")
-    public String userProfileUpload
-            (
-                    @RequestParam("profileImage")MultipartFile file,
-                    @AuthenticationPrincipal MyUserDetail userDetail
-                    )throws IOException
-    {
-        User principal = userDetail.getUser();
 
-
-        UUID uuid = UUID.randomUUID();
-        String uuidFilename = uuid + "_"+ file.getOriginalFilename();
-        Path filePath = Paths.get(fileRealPath + uuidFilename);
-        Files.write(filePath, file.getBytes());
-
-        principal.setProfileImage(uuidFilename);
-
-
-        mUserRepository.save(principal);
-
-        return "redirect:/user/"+principal.getId();
-    }
 
 
 
