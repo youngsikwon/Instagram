@@ -1,3 +1,4 @@
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +25,13 @@
                 <input type="file" name="profileImage" style="display: none;" />
             </form>
             <img src="/upload/${user.profileImage}"  onerror="this.onerror=null; this.src='/images/avatar.jpg'" id="profile_image" style="cursor: pointer" />
-
         </div>
 
         <div class="profile__info">
             <div class="profile__title">
                 <h1>${user.username}</h1>
+
+
                 <!-- 수정 -->
                 <c:if test="${principal.user.id ne user.id}">
                     <div id="follow_check">
@@ -55,10 +57,11 @@
                 </c:if>
             </div>
             <ul class="profile__stats">
-                <li class="profile__stat"><span class="profile__stat-number">313</span> 게시물</li>
-                <li class="profile__stat"><span class="profile__stat-number">4,444 </span><a href="/follow/follower/${user.id}">팔로워</a></li>
-                <li class="profile__stat"><span class="profile__stat-number">44 </span><a href="/follow/follow/${user.id}">팔로우</a></li>
+                <li class="profile__stat"><span class="profile__stat-number">${imageCount}</span> 게시물</li>
+                <li class="profile__stat"><span class="profile__stat-number">${followerCount} </span><a href="/follow/follower/${user.id}">팔로워</a></li>
+                <li class="profile__stat"><span class="profile__stat-number">${followCount} </span><a href="/follow/follow/${user.id}">팔로우</a></li>
             </ul>
+
             <div class="profile__bio">
                 <p class="profile__fullname">${user.name }</p>
                 <p>${user.bio }</p>
@@ -67,30 +70,23 @@
             </div>
         </div>
     </header>
+
     <div class="profile__photo-grid">
 
-        <!-- 첫줄 -->
-        <div class="profile__photo">
-            <a href="image-detail.html"> <img src="/images/feedPhoto.jpg"></a>
-            <div class="profile__photo-overlay">
-                <span class="profile__photo-stat"> <i class="fa fa-heart"></i> 504</span>
-                <span class="profile__photo-stat"> <i class="fa fa-comment"></i> 22</span>
+        <!-- 유저가 업로드한 Feed 사진 -->
+        <c:forEach var="image" items="${user.images}">
+            <div class="profile__photo">
+                <a href="image-detail.html"> <img src="/upload/${image.postImage}"></a>
+                <div class="profile__photo-overlay">
+                    <span class="profile__photo-stat"> <i class="fa fa-heart"></i> ${image.likeCount}</span>
+                    <span class="profile__photo-stat"> <i class="fa fa-comment"></i> 22</span>
+                </div>
             </div>
-        </div>
-        <div class="profile__photo">
-            <a href="image-detail.html"> <img src="/images/feedPhoto.jpg"></a>
-            <div class="profile__photo-overlay">
-                <span class="profile__photo-stat"> <i class="fa fa-heart"></i> 504</span>
-                <span class="profile__photo-stat"> <i class="fa fa-comment"></i> 22</span>
-            </div>
-        </div>
-        <div class="profile__photo">
-            <a href="image-detail.html"> <img src="/images/feedPhoto.jpg"></a>
-            <div class="profile__photo-overlay">
-                <span class="profile__photo-stat"> <i class="fa fa-heart"></i> 504</span>
-                <span class="profile__photo-stat"> <i class="fa fa-comment"></i> 22</span>
-            </div>
-        </div>
+
+        </c:forEach>
+
+
+
 
     </div>
 </main>

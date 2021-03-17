@@ -1,5 +1,6 @@
 package com.cos.insta.controller;
 
+import com.cos.insta.model.Image;
 import com.cos.insta.model.User;
 import com.cos.insta.repository.FollowRepository;
 import com.cos.insta.repository.LikesRepository;
@@ -13,10 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -49,30 +47,39 @@ public class UserController {
     @PostMapping("/user/profileUpload")
     public String userProfileUpload
             (
-                    @RequestParam("profileImage")MultipartFile file,
+                    @RequestParam("profileImage") MultipartFile file,
                     @AuthenticationPrincipal MyUserDetail userDetail
-            )throws IOException
+            ) throws IOException
     {
         User principal = userDetail.getUser();
 
-
+        // 파일 처리
         UUID uuid = UUID.randomUUID();
-        String uuidFilename = uuid + "_"+ file.getOriginalFilename();
-        Path filePath = Paths.get(fileRealPath + uuidFilename);
+        String uuidFilename = uuid+"_"+file.getOriginalFilename();
+        Path filePath = Paths.get(fileRealPath+uuidFilename);
         Files.write(filePath, file.getBytes());
 
-        principal.setProfileImage(uuidFilename);
+        // 영속화
+        Optional<User> oUser = mUserRepository.findById(principal.getId());
+        User user = oUser.get();
 
+        // 값 변경
+        user.setProfileImage(uuidFilename);
 
-        mUserRepository.save(principal);
-
+        // 다시 영속화 및 저장
+        mUserRepository.save(user);
         return "redirect:/user/"+principal.getId();
     }
+
+
+
     //로그인
     @GetMapping("/auth/login")
     public String authLogin() {
         return "auth/login";
     }
+
+
     //회원가입
     @GetMapping("/auth/join")
     public String authJoin() {
@@ -125,6 +132,14 @@ public class UserController {
                 mFollowRepository.countByToUserId(user.getId());
         model.addAttribute("followerCount", followerCount);
 
+        // 4. likeCount
+        for(Image item: user.getImages()){
+            int likeCount = mLikesRepository.countByImageId(item.getId());
+            item.setLikeCount(likeCount);
+        }
+        //Collection.srt(user.getImages());
+        model.addAttribute("user", user);
+
         // 5번
         User principal = userDetail.getUser();
 
@@ -135,13 +150,41 @@ public class UserController {
         return "user/profile";
     }
 
-    @GetMapping("/user/edit/{id}")
-    public String userEdit(@PathVariable int id) {
+    @GetMapping("/user/edit")
+    public String userEdit(
+            @AuthenticationPrincipal MyUserDetail userDetail,
+            Model model) {
 
-        // 해당 id로 Select 하기
-        // findByUserInfo() 사용 (만들어야 함)
-
+        Optional<User> oUser = mUserRepository.findById(userDetail.getUser().getId());
+        User user = oUser.get();
+        model.addAttribute("user", user);
         return "user/profile_edit";
+    }
+
+
+
+    @PutMapping("/user/editProc")
+    public String userEditProc(
+            User requestUser,
+            @AuthenticationPrincipal MyUserDetail userDetail) {
+
+        // 영속화
+        Optional<User> oUser = mUserRepository.findById(userDetail.getUser().getId());
+        User user = oUser.get();
+
+        // 값 변경
+        user.setName(requestUser.getName());
+        user.setUsername(requestUser.getUsername());
+        user.setWebsite(requestUser.getWebsite());
+        user.setBio(requestUser.getBio());
+        user.setEmail(requestUser.getEmail());
+        user.setPhone(requestUser.getPhone());
+        user.setGender(requestUser.getGender());
+
+        // 다시 영속화 및 flush
+        mUserRepository.save(user);
+
+        return "redirect:/user/"+userDetail.getUser().getId();
     }
 
 
