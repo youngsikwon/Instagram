@@ -63,7 +63,7 @@
             </ul>
 
             <div class="profile__bio">
-                <p class="profile__fullname">${user.name }</p>
+                <p class="profile__fullname">${user.name}</p>
                 <p>${user.bio }</p>
                 <p><a href="${user.website}" class="profile__link">
                     ${user.website}</a></p>
@@ -94,10 +94,10 @@
 <div class="profile__overlay">
     <i class="fa fa-times"></i>
     <div class="profile__overlay-container">
-        <a href="#" class="profile__overlay-link">Change password</a> <a href="#"
-                                                                         class="profile__overlay-link">Authorize Apps</a> <a href="#" class="profile__overlay-link">Notifications</a>
-        <a href="#" class="profile__overlay-link" id="logout">Log Out</a> <a href="#"
-                                                                             class="profile__overlay-link" id="cancel">Cancel</a>
+        <!-- 패스워드 변경 직접 구현 -->
+        <a href="/auth/password" class="profile__overlay-link">Change password</a>
+        <a href="/logout" class="profile__overlay-link" id="logout">Logout</a>
+        <a href="#" class="profile__overlay-link" id="cancel">Cancel</a>
     </div>
 </div>
 

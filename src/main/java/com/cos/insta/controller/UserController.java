@@ -70,6 +70,16 @@ public class UserController {
         mUserRepository.save(user);
         return "redirect:/user/"+principal.getId();
     }
+    @GetMapping("/user/edit")
+    public String userEdit(
+            @AuthenticationPrincipal MyUserDetail userDetail,
+            Model model) {
+
+        Optional<User> oUser = mUserRepository.findById(userDetail.getUser().getId());
+        User user = oUser.get();
+        model.addAttribute("user", user);
+        return "user/profile_edit";
+    }
 
 
 
@@ -150,16 +160,7 @@ public class UserController {
         return "user/profile";
     }
 
-    @GetMapping("/user/edit")
-    public String userEdit(
-            @AuthenticationPrincipal MyUserDetail userDetail,
-            Model model) {
 
-        Optional<User> oUser = mUserRepository.findById(userDetail.getUser().getId());
-        User user = oUser.get();
-        model.addAttribute("user", user);
-        return "user/profile_edit";
-    }
 
 
 
