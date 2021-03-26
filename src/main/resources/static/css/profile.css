@@ -41,7 +41,7 @@
 /* userProfileUpload 수정 */
 .profile__photo-grid {
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: 1fr 1fr 1fr;
 	justify-content: center;
 	grid-gap: 10px;
 }

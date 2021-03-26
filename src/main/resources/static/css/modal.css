@@ -13,15 +13,6 @@
 	background: rgba(0,0,0, 0.6);
 	z-index: 999;
 }
-.follow_popup_item{
-	display: grid;
-	grid-template-columns: auto auto;
-	align-items: center;
-	justify-content: space-around;
-	border-bottom: 1px dashed #999;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
 
 #like_popup_list {
 	background: #FFF;

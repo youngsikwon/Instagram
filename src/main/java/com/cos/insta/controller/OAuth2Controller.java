@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class OAuth2Controller {
 
-    private String clientId = "54e53a67a79330420492c698ad752c6a";
+    private String clientId = "455a59bdac597d54554d432bd88ae01c";
     private String redirectUri = "http://localhost:8080/auth/kakao/callback";
 
     @Autowired

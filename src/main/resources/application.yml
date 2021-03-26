@@ -2,19 +2,19 @@ server:
   port: 8080
   servlet:
     context-path: /
-
+    
 spring:
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-
+      
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/insta?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
     username: insta
     password: bitc5600
-
+    
   jpa:
     open-in-view: false
     hibernate:
@@ -24,9 +24,9 @@ spring:
       use-new-id-generator-mappings: false
     show-sql: true
     properties:
-      hibernate.enable_lazy_load_no_trans: true
+      hibernate.enable_lazy_load_no_trans: true  
       hibernate.format_sql: true
-
+      
   servlet:
     multipart:
       enabled: true
@@ -37,14 +37,15 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-
+      
   security:
     user:
       name: test
-      password: 1234
+      password: 1234   
 
 file:
-  path: /Users/wonyoungsik/mysql/Instagram/src/main/resources/upload/
-
-  #file:
-  #  path: C:/src/springWork/insta/springboot-jpa-instagram/src/main/resources/upload/
+  path: C:/src/instagram/src/main/resources/upload/
+  
+#file:
+#  path: C:/src/springWork/insta/springboot-jpa-instagram/src/main/resources/upload/
+  
