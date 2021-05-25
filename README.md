@@ -1,5 +1,5 @@
 # Instagram 
- - Skill : SPringboot, JPA, MySQL, Security, JSP
+ - Skill : Spring boot, JPA, MySQL, Security, JSP
  
 ## Side project
 
